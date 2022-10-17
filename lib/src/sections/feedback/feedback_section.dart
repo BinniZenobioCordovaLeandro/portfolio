@@ -1,0 +1,36 @@
+import 'package:bin_protfolio/src/core/section_title.dart';
+import 'package:bin_protfolio/src/core/wrap_component.dart';
+import 'package:bin_protfolio/src/models/Feedback.dart';
+import 'package:flutter/material.dart';
+
+import 'components/feedback_card.dart';
+
+class FeedbackSection extends StatelessWidget {
+  const FeedbackSection({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      constraints: const BoxConstraints(maxWidth: 1110),
+      child: Column(
+        children: [
+          const SizedBox(height: 20.0),
+          const SectionTitle(
+            title: "Feedback Received",
+            subTitle: "Coworkers testimonials that inspired me a lot",
+            color: Color(0xFF00B1FF),
+          ),
+          const SizedBox(height: 20.0),
+          WrapComponent(
+            children: List.generate(
+              feedbacks.length,
+              (index) => FeedbackCard(index: index),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
