@@ -14,3 +14,16 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+
+## How build web to github pages use
+
+To compile
+```
+  fvm flutter build web --web-renderer html --release --base-href "/portfolio/"
+```
+
+To update /docs directory
+```
+  mv build/web/* docs
+```
