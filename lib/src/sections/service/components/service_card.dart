@@ -1,3 +1,4 @@
+import 'package:bin_protfolio/src/core/text_component.dart';
 import 'package:bin_protfolio/src/models/Service.dart';
 import 'package:flutter/material.dart';
 
@@ -30,8 +31,8 @@ class _ServiceCardState extends State<ServiceCard> {
       child: AnimatedContainer(
         duration: duration,
         margin: const EdgeInsets.symmetric(vertical: 20 * 2),
-        height: 256,
-        width: 256,
+        height: 200,
+        width: 200,
         decoration: BoxDecoration(
           color: services[widget.index!].color,
           borderRadius: BorderRadius.circular(10),
@@ -70,9 +71,11 @@ class _ServiceCardState extends State<ServiceCard> {
               ),
             ),
             const SizedBox(height: 20.0),
-            Text(
+            TextComponent(
               services[widget.index!].title!,
-              style: const TextStyle(fontSize: 22),
+              style: Theme.of(context).textTheme.headline6?.copyWith(
+                    color: Theme.of(context).scaffoldBackgroundColor,
+                  ),
             ),
           ],
         ),

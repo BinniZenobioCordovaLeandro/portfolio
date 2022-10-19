@@ -1,3 +1,5 @@
+import 'package:bin_protfolio/src/core/fractionally_sized_box_component.dart';
+import 'package:bin_protfolio/src/core/text_component.dart';
 import 'package:bin_protfolio/src/models/Feedback.dart';
 import 'package:flutter/material.dart';
 
@@ -28,10 +30,7 @@ class _FeedbackCardState extends State<FeedbackCard> {
       },
       child: AnimatedContainer(
         duration: duration,
-        margin: EdgeInsets.only(top: 20.0 * 3),
-        padding: EdgeInsets.symmetric(horizontal: 20.0),
-        height: 350,
-        width: 350,
+        width: 360,
         decoration: BoxDecoration(
           color: feedbacks[widget.index].color,
           borderRadius: BorderRadius.circular(10),
@@ -44,47 +43,68 @@ class _FeedbackCardState extends State<FeedbackCard> {
               )
           ],
         ),
-        child: Column(
-          children: [
-            Transform.translate(
-              offset: Offset(0, -55),
-              child: AnimatedContainer(
-                duration: duration,
-                height: 100,
-                width: 100,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.white, width: 10),
-                  boxShadow: [
-                    if (!isHover)
-                      BoxShadow(
-                        offset: Offset(0, 20),
-                        blurRadius: 50,
-                        color: Colors.black.withOpacity(0.1),
-                      )
-                  ],
-                  image: DecorationImage(
-                    image: AssetImage(feedbacks[widget.index].userPic!),
+        child: FractionallySizedBoxComponent(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 16.0,
+            ),
+            child: Row(
+              children: [
+                AnimatedContainer(
+                  duration: duration,
+                  height: 100,
+                  width: 100,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: feedbacks[widget.index].color!,
+                      width: 10,
+                    ),
+                    boxShadow: [
+                      if (!isHover)
+                        BoxShadow(
+                          offset: Offset(0, 20),
+                          blurRadius: 50,
+                          color: Colors.black.withOpacity(0.1),
+                        )
+                    ],
+                    image: DecorationImage(
+                      image: AssetImage(feedbacks[widget.index].userPic!),
+                    ),
                   ),
                 ),
-              ),
+                const VerticalDivider(),
+                Expanded(
+                  child: Column(
+                    children: [
+                      TextComponent(
+                        feedbacks[widget.index].title ?? '',
+                        style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                              fontWeight: FontWeight.w300,
+                              fontStyle: FontStyle.italic,
+                              decoration: TextDecoration.underline,
+                            ),
+                      ),
+                      TextComponent(
+                        feedbacks[widget.index].review!,
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                              fontWeight: FontWeight.w300,
+                              fontStyle: FontStyle.italic,
+                            ),
+                      ),
+                      const Divider(),
+                      TextComponent(
+                        feedbacks[widget.index].name!,
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
+                      )
+                    ],
+                  ),
+                ),
+              ],
             ),
-            Text(
-              feedbacks[widget.index].review!,
-              style: TextStyle(
-                color: Theme.of(context).primaryColor,
-                fontSize: 18,
-                fontWeight: FontWeight.w300,
-                fontStyle: FontStyle.italic,
-                height: 1.5,
-              ),
-            ),
-            SizedBox(height: 20.0 * 2),
-            Text(
-              "Ronald Thompson",
-              style: TextStyle(fontWeight: FontWeight.bold),
-            )
-          ],
+          ),
         ),
       ),
     );

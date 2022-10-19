@@ -23,10 +23,13 @@ class ServiceSection extends StatelessWidget {
             subTitle: "My Strong Areas",
           ),
           const SizedBox(height: 20.0),
-          WrapComponent(
-            children: List.generate(
-              services.length,
-              (index) => ServiceCard(index: index),
+          SizedBox(
+            width: 1110,
+            child: WrapComponent(
+              children: List.generate(
+                services.length,
+                (index) => ServiceCard(index: index),
+              ),
             ),
           )
         ],

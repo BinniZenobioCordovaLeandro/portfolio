@@ -4,7 +4,7 @@ import 'package:bin_protfolio/src/sections/contact/contact_section.dart';
 import 'package:bin_protfolio/src/sections/feedback/feedback_section.dart';
 import 'package:bin_protfolio/src/sections/recent_work/recent_work_section.dart';
 import 'package:bin_protfolio/src/sections/service/service_section.dart';
-import 'package:bin_protfolio/src/sections/topSection/components/menu.dart';
+import 'package:bin_protfolio/src/pages/components/menu.dart';
 import 'package:bin_protfolio/src/sections/topSection/top_section.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +17,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   PageController homePageController = PageController();
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +26,9 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           PageView(
             controller: homePageController,
+            onPageChanged: (int index) => setState(() {
+              selectedIndex = index;
+            }),
             physics: const BouncingScrollPhysics(),
             scrollDirection: Axis.vertical,
             children: const [
@@ -44,11 +48,12 @@ class _HomeScreenState extends State<HomeScreen> {
             right: 0,
             child: Center(
               child: BottomTabMenu(
+                selectedIndex: selectedIndex,
                 onTap: (int index) {
                   print('tab $index index');
                   homePageController.animateToPage(
                     index,
-                    duration: Duration(seconds: 1),
+                    duration: const Duration(seconds: 1),
                     curve: Curves.easeInOutCirc,
                   );
                 },

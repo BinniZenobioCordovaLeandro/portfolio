@@ -30,7 +30,7 @@ class RecentWorkSection extends StatelessWidget {
           const SizedBox(height: 20.0),
           const SectionTitle(
             title: "Recent Works",
-            subTitle: "My Strong Areas",
+            subTitle: "My great works",
             color: Color(0xFFFFB100),
           ),
           const SizedBox(height: 20.0),

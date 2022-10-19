@@ -2,9 +2,11 @@ import 'package:bin_protfolio/src/core/text_component.dart';
 import 'package:flutter/material.dart';
 
 class BottomTabMenu extends StatefulWidget {
+  int selectedIndex = 0;
   void Function(int index)? onTap;
 
   BottomTabMenu({
+    required this.selectedIndex,
     this.onTap,
   });
 
@@ -56,13 +58,12 @@ class _BottomTabMenuState extends State<BottomTabMenu> {
   Widget buildMenuItem(int index) => InkWell(
         onTap: () {
           setState(() {
-            selectedIndex = index;
             if (widget.onTap != null) widget.onTap!(index);
           });
         },
         onHover: (value) {
           setState(() {
-            value ? hoverIndex = index : hoverIndex = selectedIndex;
+            value ? hoverIndex = index : hoverIndex = widget.selectedIndex;
           });
         },
         child: Container(
@@ -81,8 +82,9 @@ class _BottomTabMenuState extends State<BottomTabMenu> {
                 duration: const Duration(milliseconds: 200),
                 left: 0,
                 right: 0,
-                bottom:
-                    selectedIndex != index && hoverIndex == index ? -20 : -32,
+                bottom: widget.selectedIndex != index && hoverIndex == index
+                    ? -20
+                    : -32,
                 child: Image.asset("assets/images/Hover.png"),
               ),
               // Select
@@ -90,7 +92,7 @@ class _BottomTabMenuState extends State<BottomTabMenu> {
                 duration: const Duration(milliseconds: 200),
                 left: 0,
                 right: 0,
-                bottom: selectedIndex == index ? -2 : -32,
+                bottom: widget.selectedIndex == index ? -2 : -32,
                 child: Image.asset("assets/images/Hover.png"),
               ),
             ],

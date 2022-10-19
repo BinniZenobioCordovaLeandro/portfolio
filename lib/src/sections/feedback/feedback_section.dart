@@ -23,10 +23,13 @@ class FeedbackSection extends StatelessWidget {
             color: Color(0xFF00B1FF),
           ),
           const SizedBox(height: 20.0),
-          WrapComponent(
-            children: List.generate(
-              feedbacks.length,
-              (index) => FeedbackCard(index: index),
+          SizedBox(
+            width: 1110,
+            child: WrapComponent(
+              children: List.generate(
+                feedbacks.length,
+                (index) => FeedbackCard(index: index),
+              ),
             ),
           ),
         ],
