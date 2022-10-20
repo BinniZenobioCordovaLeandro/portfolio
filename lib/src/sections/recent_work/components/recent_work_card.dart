@@ -1,6 +1,6 @@
-import 'package:bin_protfolio/src/core/fractionally_sized_box_component.dart';
-import 'package:bin_protfolio/src/core/outline_button_component.dart';
-import 'package:bin_protfolio/src/core/text_component.dart';
+import 'package:bin_protfolio/src/core/components/fractionally_sized_box_component.dart';
+import 'package:bin_protfolio/src/core/components/outline_button_component.dart';
+import 'package:bin_protfolio/src/core/components/text_component.dart';
 import 'package:bin_protfolio/src/models/RecentWork.dart';
 import 'package:flutter/material.dart';
 

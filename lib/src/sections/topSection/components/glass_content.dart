@@ -1,6 +1,5 @@
 import 'dart:ui';
-
-import 'package:bin_protfolio/src/core/fractionally_sized_box_component.dart';
+import 'package:bin_protfolio/src/core/components/fractionally_sized_box_component.dart';
 import 'package:flutter/material.dart';
 
 class GlassContent extends StatelessWidget {

@@ -121,7 +121,8 @@ class LightTheme {
           },
         ),
         overlayColor: MaterialStateColor.resolveWith(
-            (states) => const Color.fromRGBO(85, 184, 73, 0.15)),
+          (states) => colorBrand.withOpacity(0.5),
+        ),
         backgroundColor: MaterialStateProperty.resolveWith<Color>(
             (Set<MaterialState> states) {
           if (states.contains(MaterialState.disabled)) {

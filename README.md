@@ -16,7 +16,7 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 
 
-## How build web to github pages use
+## How build web to github pages using docs
 
 To compile
 ```
@@ -25,14 +25,14 @@ To compile
 
 To update /docs directory
 ```
-  mv build/web/* docs
+  cp -R ./build/web/* ./docs/
 ```
 
 ## Test locally using Python3
 
 run build/web directory
 ```
-  python3 -m http.server --directory docs
+  python3 -m http.server --directory ./build/web
 ```
 
 run docs directory

@@ -1,5 +1,5 @@
-import 'package:bin_protfolio/src/core/fractionally_sized_box_component.dart';
-import 'package:bin_protfolio/src/core/text_component.dart';
+import 'package:bin_protfolio/src/core/components/fractionally_sized_box_component.dart';
+import 'package:bin_protfolio/src/core/components/text_component.dart';
 import 'package:bin_protfolio/src/models/Feedback.dart';
 import 'package:flutter/material.dart';
 
@@ -32,14 +32,15 @@ class _FeedbackCardState extends State<FeedbackCard> {
         duration: duration,
         width: 360,
         decoration: BoxDecoration(
-          color: feedbacks[widget.index].color,
+          color: Theme.of(context).cardTheme.color,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             if (isHover)
               BoxShadow(
-                offset: Offset(0, 20),
-                blurRadius: 50,
-                color: Colors.black.withOpacity(0.1),
+                offset: const Offset(0, 3.00),
+                blurRadius: 15,
+                color: feedbacks[widget.index].color ??
+                    Colors.black.withOpacity(0.1),
               )
           ],
         ),
@@ -63,9 +64,10 @@ class _FeedbackCardState extends State<FeedbackCard> {
                     boxShadow: [
                       if (!isHover)
                         BoxShadow(
-                          offset: Offset(0, 20),
-                          blurRadius: 50,
-                          color: Colors.black.withOpacity(0.1),
+                          offset: const Offset(0, 3.00),
+                          blurRadius: 13,
+                          color: feedbacks[widget.index].color ??
+                              Colors.black.withOpacity(0.1),
                         )
                     ],
                     image: DecorationImage(

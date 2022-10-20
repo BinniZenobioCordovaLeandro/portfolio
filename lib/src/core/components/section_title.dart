@@ -1,4 +1,4 @@
-import 'package:bin_protfolio/src/core/text_component.dart';
+import 'package:bin_protfolio/src/core/components/text_component.dart';
 import 'package:flutter/material.dart';
 
 class SectionTitle extends StatelessWidget {

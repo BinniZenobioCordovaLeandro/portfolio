@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class SocalCard extends StatefulWidget {
-  const SocalCard({
+class SocialCard extends StatefulWidget {
+  const SocialCard({
     super.key,
     required this.iconSrc,
     required this.name,
@@ -14,10 +14,10 @@ class SocalCard extends StatefulWidget {
   final Function()? press;
 
   @override
-  _SocalCardState createState() => _SocalCardState();
+  _SocialCardState createState() => _SocialCardState();
 }
 
-class _SocalCardState extends State<SocalCard> {
+class _SocialCardState extends State<SocialCard> {
   bool isHover = false;
   @override
   Widget build(BuildContext context) {
@@ -30,20 +30,20 @@ class _SocalCardState extends State<SocalCard> {
           });
         },
         child: AnimatedContainer(
-          duration: Duration(milliseconds: 200),
-          padding: EdgeInsets.symmetric(
+          duration: const Duration(milliseconds: 200),
+          padding: const EdgeInsets.symmetric(
             vertical: 20.0 / 2,
             horizontal: 20.0 * 1.5,
           ),
           decoration: BoxDecoration(
-            color: widget.color,
+            color: Theme.of(context).cardTheme.color,
             borderRadius: BorderRadius.circular(10),
             boxShadow: [
               if (isHover)
                 BoxShadow(
-                  offset: Offset(0, 20),
-                  blurRadius: 50,
-                  color: Colors.black.withOpacity(0.1),
+                  offset: const Offset(0, 3.00),
+                  blurRadius: 15,
+                  color: widget.color ?? Colors.black.withOpacity(0.1),
                 )
             ],
           ),
@@ -53,8 +53,9 @@ class _SocalCardState extends State<SocalCard> {
                 widget.iconSrc,
                 height: 80,
                 width: 80,
+                fit: BoxFit.contain,
               ),
-              SizedBox(width: 20.0),
+              const SizedBox(width: 20.0),
               Text(widget.name),
             ],
           ),

@@ -1,4 +1,6 @@
-import 'package:bin_protfolio/src/core/scaffold_component.dart';
+import 'package:bin_protfolio/src/core/components/expandable_fab_component.dart';
+import 'package:bin_protfolio/src/core/components/scaffold_component.dart';
+import 'package:bin_protfolio/src/core/helpers/launcher_link_helper.dart';
 import 'package:bin_protfolio/src/sections/about/about_section.dart';
 import 'package:bin_protfolio/src/sections/contact/contact_section.dart';
 import 'package:bin_protfolio/src/sections/feedback/feedback_section.dart';
@@ -22,6 +24,39 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return ScaffoldComponent(
+      floatingActionButton: ExpandableFabComponent(
+        distance: 80.0,
+        children: [
+          ActionButton(
+            icon: const Icon(Icons.mail_outline_outlined),
+            onPressed: () {
+              LauncherLinkHelper launcherLinkHelper = LauncherLinkHelper(
+                url: 'binni.2000.cordova@gmail.com',
+                isMail: true,
+              );
+              launcherLinkHelper.sendEmail();
+            },
+          ),
+          ActionButton(
+            icon: const Icon(Icons.video_camera_front_outlined),
+            onPressed: () {
+              LauncherLinkHelper launcherLinkHelper = LauncherLinkHelper(
+                url: 'https://calendly.com/binnizenobiocordovaleandro/meet',
+              );
+              launcherLinkHelper.launchInBrowser();
+            },
+          ),
+          ActionButton(
+            icon: const Icon(Icons.whatsapp_outlined),
+            onPressed: () {
+              LauncherLinkHelper launcherLinkHelper = LauncherLinkHelper(
+                url: 'https://web.whatsapp.com/send?phone=51971581847',
+              );
+              launcherLinkHelper.launchInBrowser();
+            },
+          ),
+        ],
+      ),
       body: Stack(
         children: [
           PageView(

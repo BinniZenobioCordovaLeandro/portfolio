@@ -1,4 +1,4 @@
-import 'package:bin_protfolio/src/core/text_component.dart';
+import 'package:bin_protfolio/src/core/components/text_component.dart';
 import 'package:flutter/material.dart';
 
 class BottomTabMenu extends StatefulWidget {
@@ -39,8 +39,8 @@ class _BottomTabMenuState extends State<BottomTabMenu> {
         ),
         boxShadow: [
           BoxShadow(
-            offset: const Offset(0, 50),
-            blurRadius: 50,
+            offset: const Offset(0, 3.00),
+            blurRadius: 15,
             color: const Color(0xFF0700B1).withOpacity(0.15),
           )
         ],

@@ -1,4 +1,4 @@
-import 'package:bin_protfolio/src/core/text_component.dart';
+import 'package:bin_protfolio/src/core/components/text_component.dart';
 import 'package:bin_protfolio/src/models/Service.dart';
 import 'package:flutter/material.dart';
 
@@ -34,14 +34,15 @@ class _ServiceCardState extends State<ServiceCard> {
         height: 200,
         width: 200,
         decoration: BoxDecoration(
-          color: services[widget.index!].color,
+          color: Theme.of(context).cardTheme.color,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             if (isHover)
               BoxShadow(
-                offset: const Offset(0, 20),
-                blurRadius: 50,
-                color: Colors.black.withOpacity(0.1),
+                offset: const Offset(0, 3.00),
+                blurRadius: 15,
+                color: services[widget.index!].color ??
+                    Colors.black.withOpacity(0.1),
               )
           ],
         ),
@@ -54,14 +55,15 @@ class _ServiceCardState extends State<ServiceCard> {
               height: 120,
               width: 120,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: services[widget.index!].color,
                 shape: BoxShape.circle,
                 boxShadow: [
                   if (!isHover)
                     BoxShadow(
-                      offset: Offset(0, 20),
-                      blurRadius: 30,
-                      color: Colors.black.withOpacity(0.1),
+                      offset: const Offset(0, 3.00),
+                      blurRadius: 13,
+                      color: services[widget.index!].color ??
+                          Colors.black.withOpacity(0.1),
                     ),
                 ],
               ),
@@ -73,9 +75,7 @@ class _ServiceCardState extends State<ServiceCard> {
             const SizedBox(height: 20.0),
             TextComponent(
               services[widget.index!].title!,
-              style: Theme.of(context).textTheme.headline6?.copyWith(
-                    color: Theme.of(context).scaffoldBackgroundColor,
-                  ),
+              style: Theme.of(context).textTheme.headline6,
             ),
           ],
         ),

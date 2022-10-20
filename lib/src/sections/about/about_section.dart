@@ -1,9 +1,7 @@
-import 'package:bin_protfolio/src/core/default_button.dart';
-import 'package:bin_protfolio/src/core/fractionally_sized_box_component.dart';
-import 'package:bin_protfolio/src/core/my_outline_button.dart';
-import 'package:bin_protfolio/src/core/wrap_component.dart';
+import 'package:bin_protfolio/src/core/components/default_button.dart';
+import 'package:bin_protfolio/src/core/components/my_outline_button.dart';
+import 'package:bin_protfolio/src/core/components/wrap_component.dart';
 import 'package:flutter/material.dart';
-
 import 'components/about_section_text.dart';
 import 'components/about_text_with_sign.dart';
 import 'components/experience_card.dart';
@@ -17,10 +15,11 @@ class AboutSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       constraints: const BoxConstraints(maxWidth: 1110),
-      child: FractionallySizedBoxComponent(
-        child: WrapComponent(
-          children: [
-            Flex(
+      child: WrapComponent(
+        children: [
+          SizedBox(
+            width: 1110,
+            child: Flex(
               direction: Axis.horizontal,
               children: const [
                 AboutTextWithSign(),
@@ -34,8 +33,13 @@ class AboutSection extends StatelessWidget {
                 ),
               ],
             ),
-            const Divider(),
-            Flex(
+          ),
+          const SizedBox(
+            height: 20.0,
+          ),
+          SizedBox(
+            width: 1110,
+            child: Flex(
               direction: Axis.horizontal,
               children: const [
                 ExperienceCard(numOfExp: "05"),
@@ -49,27 +53,31 @@ class AboutSection extends StatelessWidget {
                 ),
               ],
             ),
-            Row(
+          ),
+          const Divider(),
+          SizedBox(
+            width: 1110,
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // Expanded(
-                //   child:
-                // MyOutlineButton(
-                //   imageSrc: "assets/images/hand.png",
-                //   text: "Hire Me!",
-                //   press: () {},
-                // ),
-                // ),
-                const SizedBox(width: 20.0 * 1.5),
-                // DefaultButton(
-                //   imageSrc: "assets/images/download.png",
-                //   text: "Download CV",
-                //   press: () {},
-                // ),
+                Expanded(
+                  child: MyOutlineButton(
+                    imageSrc: "assets/images/hand.png",
+                    text: "Hire Me!",
+                    press: () {},
+                  ),
+                ),
+                Expanded(
+                  child: DefaultButton(
+                    imageSrc: "assets/images/download.png",
+                    text: "Download CV",
+                    press: () {},
+                  ),
+                ),
               ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

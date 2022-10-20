@@ -1,11 +1,14 @@
-import 'package:bin_protfolio/src/core/default_button.dart';
-import 'package:bin_protfolio/src/core/form_component.dart';
-import 'package:bin_protfolio/src/core/section_title.dart';
-import 'package:bin_protfolio/src/core/text_field_widget.dart';
-import 'package:bin_protfolio/src/core/wrap_component.dart';
+import 'package:bin_protfolio/src/core/components/default_button.dart';
+import 'package:bin_protfolio/src/core/components/form_component.dart';
+import 'package:bin_protfolio/src/core/components/fractionally_sized_box_component.dart';
+import 'package:bin_protfolio/src/core/components/section_title.dart';
+import 'package:bin_protfolio/src/core/components/text_field_widget.dart';
+import 'package:bin_protfolio/src/core/components/wrap_component.dart';
+import 'package:bin_protfolio/src/core/helpers/launcher_link_helper.dart';
+import 'package:bin_protfolio/src/models/Social.dart';
 import 'package:flutter/material.dart';
 
-import 'components/socal_card.dart';
+import 'components/social_card.dart';
 
 class ContactSection extends StatelessWidget {
   const ContactSection({
@@ -15,8 +18,6 @@ class ContactSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // this height only for demo
-      // height: 500,
       width: double.infinity,
       decoration: BoxDecoration(
         color: const Color(0xFFE8F0F9),
@@ -56,47 +57,44 @@ class ContactBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       constraints: const BoxConstraints(maxWidth: 1110),
-      margin: const EdgeInsets.only(top: 20.0 * 2),
-      padding: const EdgeInsets.all(20.0 * 3),
       decoration: BoxDecoration(
-        color: Theme.of(context).scaffoldBackgroundColor,
+        color: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.50),
         borderRadius: const BorderRadius.all(
           Radius.circular(20),
         ),
       ),
-      child: Column(
-        children: [
-          WrapComponent(
-            children: [
-              SocalCard(
-                color: const Color(0xFFD9FFFC),
-                iconSrc: "assets/images/skype.png",
-                name: 'Skype',
-                press: () {},
-              ),
-              SocalCard(
-                color: const Color(0xFFE4FFC7),
-                iconSrc: "assets/images/whatsapp.png",
-                name: 'WhatsApp',
-                press: () {},
-              ),
-              SocalCard(
-                color: const Color(0xFFE8F0F9),
-                iconSrc: "assets/images/messanger.png",
-                name: 'Messenger',
-                press: () {},
-              ),
-              SocalCard(
-                color: const Color(0xFFE8F0F9),
-                iconSrc: "assets/images/messanger.png",
-                name: 'LinkedIn',
-                press: () {},
-              ),
-            ],
+      child: Center(
+        child: FractionallySizedBoxComponent(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16),
+            child: Column(
+              children: [
+                WrapComponent(
+                  alignment: WrapAlignment.spaceBetween,
+                  children: List.generate(
+                    socials.length,
+                    (index) => SocialCard(
+                      color: socials[index].color!,
+                      iconSrc: socials[index].image!,
+                      name: socials[index].name!,
+                      press: (socials[index].link != null)
+                          ? () {
+                              LauncherLinkHelper launcherLinkHelper =
+                                  LauncherLinkHelper(
+                                url: socials[index].link!,
+                              );
+                              launcherLinkHelper.launchInBrowser();
+                            }
+                          : null,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20.0),
+                const ContactForm(),
+              ],
+            ),
           ),
-          const SizedBox(height: 20.0),
-          const ContactForm(),
-        ],
+        ),
       ),
     );
   }
@@ -169,8 +167,6 @@ class ContactForm extends StatelessWidget {
             ),
           ),
           SizedBox(
-            // height: 300,
-            // TextField by default cover the height, i tryed to fix this problem but i cant
             child: TextFieldComponent(
               labelText: 'Description',
               helperText: 'Write some description',
@@ -184,15 +180,13 @@ class ContactForm extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 20.0),
-          // Center(
-          //   child: FittedBox(
-          //     child: DefaultButton(
-          //       imageSrc: "assets/images/contact_icon.png",
-          //       text: "Contact Me!",
-          //       press: () {},
-          //     ),
-          //   ),
-          // )
+          Expanded(
+            child: DefaultButton(
+              imageSrc: "assets/images/contact_icon.png",
+              text: "Contact Me!",
+              press: () {},
+            ),
+          )
         ],
       ),
     );

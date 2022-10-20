@@ -1,4 +1,4 @@
-import 'package:bin_protfolio/src/core/fractionally_sized_box_component.dart';
+import 'package:bin_protfolio/src/core/components/fractionally_sized_box_component.dart';
 import 'package:flutter/material.dart';
 
 import 'components/logo_blur_box.dart';

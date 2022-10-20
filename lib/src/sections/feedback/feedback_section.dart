@@ -1,5 +1,5 @@
-import 'package:bin_protfolio/src/core/section_title.dart';
-import 'package:bin_protfolio/src/core/wrap_component.dart';
+import 'package:bin_protfolio/src/core/components/section_title.dart';
+import 'package:bin_protfolio/src/core/components/wrap_component.dart';
 import 'package:bin_protfolio/src/models/Feedback.dart';
 import 'package:flutter/material.dart';
 
