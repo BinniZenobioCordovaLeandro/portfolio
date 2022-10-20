@@ -27,3 +27,15 @@ To update /docs directory
 ```
   mv build/web/* docs
 ```
+
+## Test locally using Python3
+
+run build/web directory
+```
+  python3 -m http.server --directory docs
+```
+
+run docs directory
+```
+  python3 -m http.server --directory docs
+```
