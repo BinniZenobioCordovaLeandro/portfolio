@@ -28,6 +28,11 @@ To update /docs directory
   cp -R ./build/web/* ./docs/
 ```
 
+To update /assets to /docs directory
+```
+  cp -R ./assets/* ./docs/assets/assets
+```
+
 ## Test locally using Python3
 
 run build/web directory

@@ -1,4 +1,5 @@
 import 'package:bin_protfolio/src/core/components/text_component.dart';
+import 'package:bin_protfolio/src/models/Menu.dart';
 import 'package:flutter/material.dart';
 
 class BottomTabMenu extends StatefulWidget {
@@ -17,14 +18,6 @@ class BottomTabMenu extends StatefulWidget {
 class _BottomTabMenuState extends State<BottomTabMenu> {
   int selectedIndex = 0;
   int hoverIndex = 0;
-  List<String> menuItems = [
-    "Home",
-    "About",
-    "Services",
-    "Portfolio",
-    "Testimonial",
-    "Contact"
-  ];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -48,7 +41,7 @@ class _BottomTabMenuState extends State<BottomTabMenu> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: List.generate(
-          menuItems.length,
+          menus.length,
           (index) => buildMenuItem(index),
         ),
       ),
@@ -72,10 +65,12 @@ class _BottomTabMenuState extends State<BottomTabMenu> {
           child: Stack(
             alignment: Alignment.center,
             children: [
+              // Icon(
+              //       menus[index].icon,
+              //     ),
               TextComponent(
-                menuItems[index],
+                menus[index].name!,
                 style: Theme.of(context).textTheme.labelLarge,
-                // style: TextStyle(fontSize: 20, color: kTextColor),
               ),
               // Hover
               AnimatedPositioned(

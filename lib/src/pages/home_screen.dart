@@ -85,7 +85,6 @@ class _HomeScreenState extends State<HomeScreen> {
               child: BottomTabMenu(
                 selectedIndex: selectedIndex,
                 onTap: (int index) {
-                  print('tab $index index');
                   homePageController.animateToPage(
                     index,
                     duration: const Duration(seconds: 1),

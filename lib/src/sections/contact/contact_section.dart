@@ -33,15 +33,36 @@ class ContactSection extends StatelessWidget {
         ),
       ),
       child: Column(
-        children: const [
-          SizedBox(height: 20.0),
-          SectionTitle(
+        children: [
+          const SizedBox(height: 20.0),
+          const SectionTitle(
             title: "Contact Me",
             subTitle: "For Project inquiry and information",
             color: Color(0xFF07E24A),
           ),
-          SizedBox(height: 20.0),
-          ContactBox()
+          const SizedBox(height: 20.0),
+          WrapComponent(
+            alignment: WrapAlignment.spaceBetween,
+            children: List.generate(
+              socials.length,
+              (index) => SocialCard(
+                color: socials[index].color!,
+                iconSrc: socials[index].image!,
+                name: socials[index].name!,
+                press: (socials[index].link != null)
+                    ? () {
+                        LauncherLinkHelper launcherLinkHelper =
+                            LauncherLinkHelper(
+                          url: socials[index].link!,
+                        );
+                        launcherLinkHelper.launchInBrowser();
+                      }
+                    : null,
+              ),
+            ),
+          ),
+          const SizedBox(height: 20.0),
+          const ContactBox()
         ],
       ),
     );
@@ -63,36 +84,11 @@ class ContactBox extends StatelessWidget {
           Radius.circular(20),
         ),
       ),
-      child: Center(
+      child: const Center(
         child: FractionallySizedBoxComponent(
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16),
-            child: Column(
-              children: [
-                WrapComponent(
-                  alignment: WrapAlignment.spaceBetween,
-                  children: List.generate(
-                    socials.length,
-                    (index) => SocialCard(
-                      color: socials[index].color!,
-                      iconSrc: socials[index].image!,
-                      name: socials[index].name!,
-                      press: (socials[index].link != null)
-                          ? () {
-                              LauncherLinkHelper launcherLinkHelper =
-                                  LauncherLinkHelper(
-                                url: socials[index].link!,
-                              );
-                              launcherLinkHelper.launchInBrowser();
-                            }
-                          : null,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 20.0),
-                const ContactForm(),
-              ],
-            ),
+            padding: EdgeInsets.symmetric(vertical: 16),
+            child: ContactForm(),
           ),
         ),
       ),
@@ -100,18 +96,26 @@ class ContactBox extends StatelessWidget {
   }
 }
 
-class ContactForm extends StatelessWidget {
+class ContactForm extends StatefulWidget {
   const ContactForm({
     super.key,
   });
 
   @override
+  State<ContactForm> createState() => _ContactFormState();
+}
+
+class _ContactFormState extends State<ContactForm> {
+  String? name, email, project, amount, description;
+
+  @override
   Widget build(BuildContext context) {
     return FormComponent(
       child: WrapComponent(
+        alignment: WrapAlignment.spaceBetween,
         children: [
           SizedBox(
-            width: 470,
+            width: 360,
             child: TextFieldComponent(
               labelText: 'Your Name',
               helperText: 'Enter Your Name',
@@ -121,11 +125,15 @@ class ContactForm extends StatelessWidget {
                 }
                 return null;
               },
-              onChanged: (String string) {},
+              onChanged: (String string) {
+                setState(() {
+                  name = string;
+                });
+              },
             ),
           ),
           SizedBox(
-            width: 470,
+            width: 360,
             child: TextFieldComponent(
               labelText: 'Email Address',
               helperText: 'Enter your email address',
@@ -135,11 +143,15 @@ class ContactForm extends StatelessWidget {
                 }
                 return null;
               },
-              onChanged: (String string) {},
+              onChanged: (String string) {
+                setState(() {
+                  email = string;
+                });
+              },
             ),
           ),
           SizedBox(
-            width: 470,
+            width: 360,
             child: TextFieldComponent(
               labelText: 'Project Type',
               helperText: 'Enter your project Type',
@@ -149,11 +161,15 @@ class ContactForm extends StatelessWidget {
                 }
                 return null;
               },
-              onChanged: (String string) {},
+              onChanged: (String string) {
+                setState(() {
+                  project = string;
+                });
+              },
             ),
           ),
           SizedBox(
-            width: 470,
+            width: 360,
             child: TextFieldComponent(
               labelText: 'Project Budget',
               helperText: 'Enter your project Budget',
@@ -163,7 +179,11 @@ class ContactForm extends StatelessWidget {
                 }
                 return null;
               },
-              onChanged: (String string) {},
+              onChanged: (String string) {
+                setState(() {
+                  amount = string;
+                });
+              },
             ),
           ),
           SizedBox(
@@ -176,10 +196,14 @@ class ContactForm extends StatelessWidget {
                 }
                 return null;
               },
-              onChanged: (String string) {},
+              onChanged: (String string) {
+                setState(() {
+                  description = string;
+                });
+              },
             ),
           ),
-          const SizedBox(height: 20.0),
+          const SizedBox(height: 8.00),
           Expanded(
             child: DefaultButton(
               imageSrc: "assets/images/contact_icon.png",

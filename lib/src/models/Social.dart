@@ -44,4 +44,11 @@ List<Social> socials = [
     color: const Color(0xFF0072b1),
     link: "https://www.linkedin.com/in/binni-zenobio-leandro-a77000175/",
   ),
+  Social(
+    id: 4,
+    name: "Calendar",
+    image: "assets/images/calendar.png",
+    color: const Color(0xFF0072b1),
+    link: "https://calendly.com/binnizenobiocordovaleandro/meet",
+  ),
 ];

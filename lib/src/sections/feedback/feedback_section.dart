@@ -1,3 +1,4 @@
+import 'package:bin_protfolio/src/core/components/fractionally_sized_box_component.dart';
 import 'package:bin_protfolio/src/core/components/section_title.dart';
 import 'package:bin_protfolio/src/core/components/wrap_component.dart';
 import 'package:bin_protfolio/src/models/Feedback.dart';
@@ -25,10 +26,12 @@ class FeedbackSection extends StatelessWidget {
           const SizedBox(height: 20.0),
           SizedBox(
             width: 1110,
-            child: WrapComponent(
-              children: List.generate(
-                feedbacks.length,
-                (index) => FeedbackCard(index: index),
+            child: FractionallySizedBoxComponent(
+              child: WrapComponent(
+                children: List.generate(
+                  feedbacks.length,
+                  (index) => FeedbackCard(index: index),
+                ),
               ),
             ),
           ),

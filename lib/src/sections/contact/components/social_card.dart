@@ -1,3 +1,4 @@
+import 'package:bin_protfolio/src/core/components/text_component.dart';
 import 'package:flutter/material.dart';
 
 class SocialCard extends StatefulWidget {
@@ -51,12 +52,15 @@ class _SocialCardState extends State<SocialCard> {
             children: [
               Image.asset(
                 widget.iconSrc,
-                height: 80,
-                width: 80,
+                height: 50,
+                width: 50,
                 fit: BoxFit.contain,
               ),
               const SizedBox(width: 20.0),
-              Text(widget.name),
+              TextComponent(
+                widget.name,
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
             ],
           ),
         ),

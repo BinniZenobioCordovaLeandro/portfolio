@@ -1,3 +1,4 @@
+import 'package:bin_protfolio/src/core/components/fractionally_sized_box_component.dart';
 import 'package:bin_protfolio/src/core/components/section_title.dart';
 import 'package:bin_protfolio/src/core/components/wrap_component.dart';
 import 'package:bin_protfolio/src/models/Service.dart';
@@ -25,10 +26,12 @@ class ServiceSection extends StatelessWidget {
           const SizedBox(height: 20.0),
           SizedBox(
             width: 1110,
-            child: WrapComponent(
-              children: List.generate(
-                services.length,
-                (index) => ServiceCard(index: index),
+            child: FractionallySizedBoxComponent(
+              child: WrapComponent(
+                children: List.generate(
+                  services.length,
+                  (index) => ServiceCard(index: index),
+                ),
               ),
             ),
           )

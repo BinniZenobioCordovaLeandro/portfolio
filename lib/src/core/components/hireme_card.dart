@@ -1,6 +1,7 @@
 import 'package:bin_protfolio/src/core/components/default_button.dart';
 import 'package:bin_protfolio/src/core/components/fractionally_sized_box_component.dart';
 import 'package:bin_protfolio/src/core/components/text_component.dart';
+import 'package:bin_protfolio/src/core/helpers/launcher_link_helper.dart';
 import 'package:flutter/material.dart';
 
 class HireMeCard extends StatelessWidget {
@@ -45,15 +46,19 @@ class HireMeCard extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 42, fontWeight: FontWeight.bold),
                       ),
-                      const TextComponent(
-                        "Get an estimate for the new project",
-                        style: TextStyle(fontWeight: FontWeight.w200),
-                      ),
+                      const SizedBox(height: 8.0),
                       Center(
                         child: DefaultButton(
                           text: "Hire Me!",
                           imageSrc: "assets/images/hand.png",
-                          press: () {},
+                          press: () {
+                            LauncherLinkHelper launcherLinkHelper =
+                                LauncherLinkHelper(
+                              url:
+                                  'https://web.whatsapp.com/send?phone=51971581847',
+                            );
+                            launcherLinkHelper.launchInBrowser();
+                          },
                         ),
                       )
                     ],
