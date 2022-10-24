@@ -7,6 +7,7 @@ class LauncherLinkHelper {
     required String url,
     bool? isPhone,
     bool? isMail,
+    Map<String, String>? params,
   }) {
     if (isPhone == true) {
       _uri = Uri(
@@ -14,10 +15,18 @@ class LauncherLinkHelper {
         path: url,
       );
     } else if (isMail == true) {
-      _uri = Uri(
-        scheme: 'mailto',
-        path: url,
-      );
+      if (params != null) {
+        _uri = Uri(
+          scheme: 'mailto',
+          path: url,
+          query: encodeQueryParameters(params),
+        );
+      } else {
+        _uri = Uri(
+          scheme: 'mailto',
+          path: url,
+        );
+      }
     } else {
       _uri = Uri.parse(url);
     }
@@ -78,6 +87,13 @@ class LauncherLinkHelper {
 
   Future<void> makePhoneCall() async {
     await launchUrl(_uri);
+  }
+
+  String? encodeQueryParameters(Map<String, String> params) {
+    return params.entries
+        .map((MapEntry<String, String> e) =>
+            '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+        .join('&');
   }
 
   Future<void> sendEmail() async {

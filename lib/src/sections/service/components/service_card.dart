@@ -30,7 +30,6 @@ class _ServiceCardState extends State<ServiceCard> {
       hoverColor: Colors.transparent,
       child: AnimatedContainer(
         duration: duration,
-        margin: const EdgeInsets.symmetric(vertical: 20 * 2),
         height: 200,
         width: 200,
         decoration: BoxDecoration(

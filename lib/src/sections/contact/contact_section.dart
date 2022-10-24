@@ -32,38 +32,41 @@ class ContactSection extends StatelessWidget {
           ),
         ),
       ),
-      child: Column(
-        children: [
-          const SizedBox(height: 20.0),
-          const SectionTitle(
-            title: "Contact Me",
-            subTitle: "For Project inquiry and information",
-            color: Color(0xFF07E24A),
-          ),
-          const SizedBox(height: 20.0),
-          WrapComponent(
-            alignment: WrapAlignment.spaceBetween,
-            children: List.generate(
-              socials.length,
-              (index) => SocialCard(
-                color: socials[index].color!,
-                iconSrc: socials[index].image!,
-                name: socials[index].name!,
-                press: (socials[index].link != null)
-                    ? () {
-                        LauncherLinkHelper launcherLinkHelper =
-                            LauncherLinkHelper(
-                          url: socials[index].link!,
-                        );
-                        launcherLinkHelper.launchInBrowser();
-                      }
-                    : null,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            const SizedBox(height: 20.0),
+            const SectionTitle(
+              title: "Contact Me",
+              subTitle: "For Project inquiry and information",
+              color: Color(0xFF07E24A),
+            ),
+            const SizedBox(height: 20.0),
+            WrapComponent(
+              alignment: WrapAlignment.spaceBetween,
+              children: List.generate(
+                socials.length,
+                (index) => SocialCard(
+                  color: socials[index].color!,
+                  iconSrc: socials[index].image!,
+                  name: socials[index].name!,
+                  press: (socials[index].link != null)
+                      ? () {
+                          LauncherLinkHelper launcherLinkHelper =
+                              LauncherLinkHelper(
+                            url: socials[index].link!,
+                          );
+                          launcherLinkHelper.launchInBrowser();
+                        }
+                      : null,
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: 20.0),
-          const ContactBox()
-        ],
+            const SizedBox(height: 20.0),
+            const ContactBox(),
+            const SizedBox(height: 120.0),
+          ],
+        ),
       ),
     );
   }
@@ -107,10 +110,12 @@ class ContactForm extends StatefulWidget {
 
 class _ContactFormState extends State<ContactForm> {
   String? name, email, project, amount, description;
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return FormComponent(
+      key: formKey,
       child: WrapComponent(
         alignment: WrapAlignment.spaceBetween,
         children: [
@@ -190,6 +195,7 @@ class _ContactFormState extends State<ContactForm> {
             child: TextFieldComponent(
               labelText: 'Description',
               helperText: 'Write some description',
+              maxLines: 3,
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'Write some description';
@@ -204,11 +210,29 @@ class _ContactFormState extends State<ContactForm> {
             ),
           ),
           const SizedBox(height: 8.00),
-          Expanded(
+          SizedBox(
+            width: 360,
             child: DefaultButton(
               imageSrc: "assets/images/contact_icon.png",
               text: "Contact Me!",
-              press: () {},
+              press: () {
+                bool isValidForm = formKey.currentState!.validate();
+                if (isValidForm) {
+                  try {
+                    LauncherLinkHelper launcherLinkHelper = LauncherLinkHelper(
+                      url: 'binni.2000.cordova@gmail.com',
+                      isMail: true,
+                      params: {
+                        'subject': '$project + $amount',
+                        'body': 'From: $name, $email \n$description'
+                      },
+                    );
+                    launcherLinkHelper.sendEmail();
+                  } catch (e) {
+                    print(e);
+                  }
+                }
+              },
             ),
           )
         ],

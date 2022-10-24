@@ -15,84 +15,87 @@ class AboutSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: const BoxConstraints(maxWidth: 1110),
-      child: WrapComponent(
-        children: [
-          SizedBox(
-            width: 1110,
-            child: Flex(
-              direction: Axis.horizontal,
-              children: const [
-                AboutTextWithSign(),
-                VerticalDivider(),
-                Expanded(
-                  flex: 3,
-                  child: AboutSectionText(
-                    text:
-                        "Hi, I'm a Flutter Developer with e-commerce experience.\nI like write clean and structured code, always oriented to OOP and modular code.\nI look for code challenges to break!.\nI prefer the full remote work.",
+      width: double.infinity,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              width: 1110,
+              child: Flex(
+                direction: Axis.horizontal,
+                children: const [
+                  AboutTextWithSign(),
+                  VerticalDivider(),
+                  Expanded(
+                    flex: 3,
+                    child: AboutSectionText(
+                      text:
+                          "Hi, I'm a Flutter Developer with e-commerce experience.\nI like write clean and structured code, always oriented to OOP and modular code.\nI look for code challenges to break!.\nI prefer the full remote work.",
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          const SizedBox(
-            height: 20.0,
-          ),
-          SizedBox(
-            width: 1110,
-            child: Flex(
-              direction: Axis.horizontal,
-              children: const [
-                ExperienceCard(numOfExp: "05"),
-                VerticalDivider(),
-                Expanded(
-                  flex: 3,
-                  child: AboutSectionText(
-                    text:
-                        "Binni has worked on creating mobile applications using Flutter and React Native for Android\nand iOS, and he has experience in connecting native SDK from Java and Swift.\nHe led a team and has experience producing front-end and back-end apps for more than 4 years,\nusing Firebase and AWS Amazon.\nHe has knowledge in Atom Design, Clean Code, Pattern Design, Refactoring techniques, Unit\ntests, Integration tests, and better practices.\nHe's passionate about new technologies and has a participative attitude in code reviews",
+            const SizedBox(height: 20.0),
+            SizedBox(
+              width: 1110,
+              child: Flex(
+                direction: Axis.horizontal,
+                children: const [
+                  ExperienceCard(numOfExp: "05"),
+                  VerticalDivider(),
+                  Expanded(
+                    flex: 3,
+                    child: AboutSectionText(
+                      text:
+                          "Binni has worked on creating mobile applications using Flutter and React Native for Android\nand iOS, and he has experience in connecting native SDK from Java and Swift.\nHe led a team and has experience producing front-end and back-end apps for more than 4 years,\nusing Firebase and AWS Amazon.\nHe has knowledge in Atom Design, Clean Code, Pattern Design, Refactoring techniques, Unit\ntests, Integration tests, and better practices.\nHe's passionate about new technologies and has a participative attitude in code reviews",
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          const Divider(),
-          SizedBox(
-            width: 1110,
-            child: WrapComponent(
-              alignment: WrapAlignment.spaceEvenly,
-              children: [
-                SizedBox(
-                  width: 360,
-                  child: MyOutlineButton(
-                    imageSrc: "assets/images/hand.png",
-                    text: "Hire Me!",
-                    press: () {
-                      LauncherLinkHelper launcherLinkHelper =
-                          LauncherLinkHelper(
-                        url: 'https://web.whatsapp.com/send?phone=51971581847',
-                      );
-                      launcherLinkHelper.launchInBrowser();
-                    },
+            const Divider(),
+            SizedBox(
+              width: 1110,
+              child: WrapComponent(
+                alignment: WrapAlignment.spaceEvenly,
+                children: [
+                  SizedBox(
+                    width: 360,
+                    child: MyOutlineButton(
+                      imageSrc: "assets/images/hand.png",
+                      text: "Hire Me!",
+                      press: () {
+                        LauncherLinkHelper launcherLinkHelper =
+                            LauncherLinkHelper(
+                          url:
+                              'https://web.whatsapp.com/send?phone=51971581847',
+                        );
+                        launcherLinkHelper.launchInBrowser();
+                      },
+                    ),
                   ),
-                ),
-                SizedBox(
-                  width: 360,
-                  child: DefaultButton(
-                    imageSrc: "assets/images/download.png",
-                    text: "Download CV",
-                    press: () {
-                      LauncherLinkHelper launcherLinkHelper =
-                          LauncherLinkHelper(
-                        url: 'assets/documents/resumen.pdf',
-                      );
-                      launcherLinkHelper.launchInBrowser();
-                    },
+                  SizedBox(
+                    width: 360,
+                    child: DefaultButton(
+                      imageSrc: "assets/images/download.png",
+                      text: "Download CV",
+                      press: () {
+                        LauncherLinkHelper launcherLinkHelper =
+                            LauncherLinkHelper(
+                          url:
+                              'https://github.com/BinniZenobioCordovaLeandro/portfolio/blob/main/docs/assets/assets/documents/resumen.pdf',
+                        );
+                        launcherLinkHelper.launchInBrowser();
+                      },
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+            const SizedBox(height: 120.0),
+          ],
+        ),
       ),
     );
   }

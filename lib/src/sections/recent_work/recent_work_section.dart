@@ -22,35 +22,38 @@ class RecentWorkSection extends StatelessWidget {
           image: AssetImage("assets/images/recent_work_bg.png"),
         ),
       ),
-      child: Column(
-        children: [
-          const SizedBox(height: 20.0),
-          const SectionTitle(
-            title: "Recent Works",
-            subTitle: "My great works",
-            color: Color(0xFFFFB100),
-          ),
-          const SizedBox(height: 20.0),
-          SizedBox(
-            width: 1110,
-            child: FractionallySizedBoxComponent(
-              child: WrapComponent(
-                children: List.generate(
-                  recentWorks.length,
-                  (index) => RecentWorkCard(
-                    index: index,
-                    press: () {},
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            const SizedBox(height: 20.0),
+            const SectionTitle(
+              title: "Recent Works",
+              subTitle: "My great works",
+              color: Color(0xFFFFB100),
+            ),
+            const SizedBox(height: 20.0),
+            SizedBox(
+              width: 1110,
+              child: FractionallySizedBoxComponent(
+                child: WrapComponent(
+                  children: List.generate(
+                    recentWorks.length,
+                    (index) => RecentWorkCard(
+                      index: index,
+                      press: () {},
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-          const SizedBox(height: 20.0),
-          const SizedBox(
-            width: 1110,
-            child: HireMeCard(),
-          ),
-        ],
+            const SizedBox(height: 20.0),
+            const SizedBox(
+              width: 1110,
+              child: HireMeCard(),
+            ),
+            const SizedBox(height: 120.0),
+          ],
+        ),
       ),
     );
   }

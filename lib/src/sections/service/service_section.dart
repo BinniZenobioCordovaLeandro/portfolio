@@ -15,27 +15,30 @@ class ServiceSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       constraints: const BoxConstraints(maxWidth: 1110),
-      child: Column(
-        children: [
-          const SizedBox(height: 20.0),
-          const SectionTitle(
-            color: Color(0xFFFF0000),
-            title: "Service Offerings",
-            subTitle: "My Strong Areas",
-          ),
-          const SizedBox(height: 20.0),
-          SizedBox(
-            width: 1110,
-            child: FractionallySizedBoxComponent(
-              child: WrapComponent(
-                children: List.generate(
-                  services.length,
-                  (index) => ServiceCard(index: index),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            const SizedBox(height: 20.0),
+            const SectionTitle(
+              color: Color(0xFFFF0000),
+              title: "Service Offerings",
+              subTitle: "My Strong Areas",
+            ),
+            const SizedBox(height: 20.0),
+            SizedBox(
+              width: 1110,
+              child: FractionallySizedBoxComponent(
+                child: WrapComponent(
+                  children: List.generate(
+                    services.length,
+                    (index) => ServiceCard(index: index),
+                  ),
                 ),
               ),
             ),
-          )
-        ],
+            const SizedBox(height: 120.0),
+          ],
+        ),
       ),
     );
   }
