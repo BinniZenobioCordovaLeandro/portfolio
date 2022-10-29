@@ -48,7 +48,7 @@ List<Social> socials = [
     id: 4,
     name: "Calendar",
     image: "assets/images/calendar.png",
-    color: const Color(0xFF0072b1),
+    color: const Color(0xFF34A853),
     link: "https://calendly.com/binnizenobiocordovaleandro/meet",
   ),
 ];

@@ -24,48 +24,51 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return ScaffoldComponent(
-      floatingActionButton: ExpandableFabComponent(
-        distance: 80.0,
-        children: [
-          ActionButton(
-            icon: const Icon(Icons.mail_outline_outlined),
-            onPressed: () {
-              LauncherLinkHelper launcherLinkHelper = LauncherLinkHelper(
-                url: 'binni.2000.cordova@gmail.com',
-                isMail: true,
-              );
-              launcherLinkHelper.sendEmail();
-            },
-          ),
-          ActionButton(
-            icon: const Icon(Icons.video_camera_front_outlined),
-            onPressed: () {
-              LauncherLinkHelper launcherLinkHelper = LauncherLinkHelper(
-                url: 'https://calendly.com/binnizenobiocordovaleandro/meet',
-              );
-              launcherLinkHelper.launchInBrowser();
-            },
-          ),
-          ActionButton(
-            icon: const Icon(Icons.whatsapp_outlined),
-            onPressed: () {
-              LauncherLinkHelper launcherLinkHelper = LauncherLinkHelper(
-                url: 'https://web.whatsapp.com/send?phone=51971581847',
-              );
-              launcherLinkHelper.launchInBrowser();
-            },
-          ),
-        ],
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 60.0),
+        child: ExpandableFabComponent(
+          distance: 80.0,
+          children: [
+            ActionButton(
+              icon: const Icon(Icons.mail_outline_outlined),
+              onPressed: () {
+                LauncherLinkHelper launcherLinkHelper = LauncherLinkHelper(
+                  url: 'binni.2000.cordova@gmail.com',
+                  isMail: true,
+                );
+                launcherLinkHelper.sendEmail();
+              },
+            ),
+            ActionButton(
+              icon: const Icon(Icons.video_camera_front_outlined),
+              onPressed: () {
+                LauncherLinkHelper launcherLinkHelper = LauncherLinkHelper(
+                  url: 'https://calendly.com/binnizenobiocordovaleandro/meet',
+                );
+                launcherLinkHelper.launchInBrowser();
+              },
+            ),
+            ActionButton(
+              icon: const Icon(Icons.whatsapp_outlined),
+              onPressed: () {
+                LauncherLinkHelper launcherLinkHelper = LauncherLinkHelper(
+                  url: 'https://web.whatsapp.com/send?phone=51971581847',
+                );
+                launcherLinkHelper.launchInBrowser();
+              },
+            ),
+          ],
+        ),
       ),
       body: Stack(
         children: [
           PageView(
             controller: homePageController,
+            scrollDirection: Axis.horizontal,
             onPageChanged: (int index) => setState(() {
               selectedIndex = index;
             }),
             physics: const BouncingScrollPhysics(),
-            scrollDirection: Axis.vertical,
             children: const [
               TopSection(),
               Center(

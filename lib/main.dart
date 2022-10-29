@@ -1,10 +1,21 @@
 import 'package:bin_protfolio/src/pages/home_screen.dart';
 import 'package:bin_protfolio/src/themes/dark_theme.dart';
 import 'package:bin_protfolio/src/themes/light_theme.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    DevicePreview(
+      enabled: true,
+      backgroundColor: Colors.black,
+      availableLocales: const [
+        Locale.fromSubtags(languageCode: 'en'),
+      ],
+      defaultDevice: Devices.ios.iPad,
+      builder: (context) => const MyApp(), // Wrap your app
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

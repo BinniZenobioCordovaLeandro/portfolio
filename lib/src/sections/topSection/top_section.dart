@@ -27,40 +27,50 @@ class TopSection extends StatelessWidget {
       ),
       child: SizedBox(
         width: double.infinity,
-        child: FractionallySizedBoxComponent(
-          child: Stack(
-            children: [
-              CircularParticle(
-                key: UniqueKey(),
-                awayRadius: 80,
-                numberOfParticles: 200,
-                speedOfParticles: 0.3,
-                height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
-                onTapAnimation: true,
-                particleColor: Colors.white.withAlpha(150),
-                awayAnimationDuration: const Duration(milliseconds: 600),
-                maxParticleSize: 8,
-                isRandSize: true,
-                isRandomColor: true,
-                randColorList: [
-                  Theme.of(context).primaryColor,
-                  Colors.white.withAlpha(210),
-                ],
-                awayAnimationCurve: Curves.easeInOutBack,
-                enableHover: true,
-                hoverColor: Colors.white,
-                hoverRadius: 90,
-                connectDots: true, //not recommended
+        child: Stack(
+          children: [
+            CircularParticle(
+              key: UniqueKey(),
+              awayRadius: 80,
+              numberOfParticles: 200,
+              speedOfParticles: 0.8,
+              height: size.height,
+              width: size.width,
+              onTapAnimation: true,
+              particleColor: Colors.white.withAlpha(150),
+              awayAnimationDuration: const Duration(milliseconds: 600),
+              maxParticleSize: 8,
+              isRandSize: true,
+              isRandomColor: true,
+              randColorList: [
+                Theme.of(context).primaryColor,
+                Colors.white.withAlpha(210),
+                Theme.of(context).primaryColor,
+              ],
+              awayAnimationCurve: Curves.bounceInOut,
+              enableHover: true,
+              hoverColor: Colors.white,
+              hoverRadius: 400,
+              connectDots: true, //not recommended
+            ),
+            Center(
+              child: FractionallySizedBoxComponent(
+                child: LogoAndBlurBox(size: size),
               ),
-              LogoAndBlurBox(size: size),
-              const Positioned(
-                bottom: 0,
-                right: 0,
-                child: PersonPic(),
+            ),
+            const Positioned(
+              bottom: 0,
+              right: 0,
+              left: 0,
+              child: Align(
+                alignment: Alignment.bottomRight,
+                child: FractionallySizedBoxComponent(
+                  widthFactor: 0.6,
+                  child: PersonPic(),
+                ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
