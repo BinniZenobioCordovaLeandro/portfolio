@@ -42,23 +42,28 @@ class ContactSection extends StatelessWidget {
               color: Color(0xFF07E24A),
             ),
             const SizedBox(height: 20.0),
-            WrapComponent(
-              alignment: WrapAlignment.spaceBetween,
-              children: List.generate(
-                socials.length,
-                (index) => SocialCard(
-                  color: socials[index].color!,
-                  iconSrc: socials[index].image!,
-                  name: socials[index].name!,
-                  press: (socials[index].link != null)
-                      ? () {
-                          LauncherLinkHelper launcherLinkHelper =
-                              LauncherLinkHelper(
-                            url: socials[index].link!,
-                          );
-                          launcherLinkHelper.launchInBrowser();
-                        }
-                      : null,
+            SizedBox(
+              width: double.infinity,
+              child: FractionallySizedBoxComponent(
+                child: WrapComponent(
+                  alignment: WrapAlignment.spaceBetween,
+                  children: List.generate(
+                    socials.length,
+                    (index) => SocialCard(
+                      color: socials[index].color!,
+                      iconSrc: socials[index].image!,
+                      name: socials[index].name!,
+                      press: (socials[index].link != null)
+                          ? () {
+                              LauncherLinkHelper launcherLinkHelper =
+                                  LauncherLinkHelper(
+                                url: socials[index].link!,
+                              );
+                              launcherLinkHelper.launchInBrowser();
+                            }
+                          : null,
+                    ),
+                  ),
                 ),
               ),
             ),

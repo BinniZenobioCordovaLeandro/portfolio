@@ -49,7 +49,9 @@ class RecentWorkSection extends StatelessWidget {
             const SizedBox(height: 20.0),
             const SizedBox(
               width: 1110,
-              child: HireMeCard(),
+              child: FractionallySizedBoxComponent(
+                child: HireMeCard(),
+              ),
             ),
             const SizedBox(height: 120.0),
           ],

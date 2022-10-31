@@ -1,4 +1,5 @@
 import 'package:bin_protfolio/src/core/components/text_component.dart';
+import 'package:bin_protfolio/src/core/helpers/launcher_link_helper.dart';
 import 'package:bin_protfolio/src/models/Service.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +22,14 @@ class _ServiceCardState extends State<ServiceCard> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        if (services[widget.index!].link != null) {
+          LauncherLinkHelper launcherLinkHelper = LauncherLinkHelper(
+            url: services[widget.index!].link!,
+          );
+          launcherLinkHelper.launchInBrowser();
+        }
+      },
       onHover: (value) {
         setState(() {
           isHover = value;
