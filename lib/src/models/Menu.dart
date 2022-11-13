@@ -36,11 +36,16 @@ List<Menu> menus = [
   ),
   Menu(
     id: 5,
+    name: "Skill",
+    icon: Icons.person_search_sharp,
+  ),
+  Menu(
+    id: 6,
     name: "Testimonial",
     icon: Icons.feedback_outlined,
   ),
   Menu(
-    id: 6,
+    id: 7,
     name: "Contact",
     icon: Icons.contact_phone_outlined,
   ),

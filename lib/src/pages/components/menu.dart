@@ -1,3 +1,4 @@
+import 'package:bin_protfolio/src/constants/environment.dart';
 import 'package:bin_protfolio/src/core/components/text_component.dart';
 import 'package:bin_protfolio/src/models/Menu.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,7 @@ class BottomTabMenu extends StatefulWidget {
 class _BottomTabMenuState extends State<BottomTabMenu> {
   int selectedIndex = 0;
   int hoverIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -42,36 +44,42 @@ class _BottomTabMenuState extends State<BottomTabMenu> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: List.generate(
           menus.length,
-          (index) => buildMenuItem(index),
+          (index) => buildMenuItem(index, context),
         ),
       ),
     );
   }
 
-  Widget buildMenuItem(int index) => InkWell(
-        onTap: () {
-          setState(() {
-            if (widget.onTap != null) widget.onTap!(index);
-          });
-        },
-        onHover: (value) {
-          setState(() {
-            value ? hoverIndex = index : hoverIndex = widget.selectedIndex;
-          });
-        },
-        child: Container(
-          constraints: const BoxConstraints(minWidth: 122),
-          height: 100,
+  Widget buildMenuItem(int index, BuildContext context) {
+    var media = MediaQuery.of(context).size;
+    bool isSmall = media.width <= PHONE_BREAK;
+    return InkWell(
+      onTap: () {
+        setState(() {
+          if (widget.onTap != null) widget.onTap!(index);
+        });
+      },
+      onHover: (value) {
+        setState(() {
+          value ? hoverIndex = index : hoverIndex = widget.selectedIndex;
+        });
+      },
+      child: Container(
+        constraints: BoxConstraints(minWidth: isSmall ? 15 : 60),
+        height: 100,
+        child: Flexible(
           child: Stack(
             alignment: Alignment.center,
             children: [
-              // Icon(
-              //       menus[index].icon,
-              //     ),
-              TextComponent(
-                menus[index].name!,
-                style: Theme.of(context).textTheme.labelLarge,
-              ),
+              if (isSmall)
+                Icon(
+                  menus[index].icon,
+                )
+              else
+                TextComponent(
+                  menus[index].name!,
+                  style: Theme.of(context).textTheme.labelLarge,
+                ),
               // Hover
               AnimatedPositioned(
                 duration: const Duration(milliseconds: 200),
@@ -93,5 +101,7 @@ class _BottomTabMenuState extends State<BottomTabMenu> {
             ],
           ),
         ),
-      );
+      ),
+    );
+  }
 }

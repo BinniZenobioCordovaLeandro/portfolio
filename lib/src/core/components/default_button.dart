@@ -15,21 +15,16 @@ class DefaultButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: press,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: 20.0,
-          horizontal: 20.0 * 2.5,
-        ),
-        child: Row(
-          children: [
-            Image.asset(
-              imageSrc,
-              height: 40,
-            ),
-            const SizedBox(width: 20.0),
-            Text(text),
-          ],
-        ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(
+            imageSrc,
+            height: 40,
+          ),
+          const SizedBox(width: 20.0),
+          Text(text),
+        ],
       ),
     );
   }

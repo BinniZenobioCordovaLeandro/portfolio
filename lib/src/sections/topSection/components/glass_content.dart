@@ -33,14 +33,12 @@ class GlassContent extends StatelessWidget {
                       .headline5
                       ?.copyWith(color: Colors.white),
                 ),
-                const Text(
-                  "Binni \nCordova",
-                  style: TextStyle(
-                    fontSize: 100,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                    height: 1.5,
-                  ),
+                Text(
+                  "Binni\nCordova",
+                  style: Theme.of(context).textTheme.headline1?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
                 ),
                 Text(
                   "Mobile Developer",

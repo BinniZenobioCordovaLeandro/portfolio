@@ -83,7 +83,7 @@ List<RecentWork> recentWorks = [
     link: "https://play.google.com/store/apps/details?id=com.pickpointer.app",
     image: "assets/images/work_4.png",
     downloads: "350+",
-    position: "Co-Founder Developer",
+    position: "Mobile Developer",
     owner: true,
     technology: 'Flutter',
     duration: '1 year',

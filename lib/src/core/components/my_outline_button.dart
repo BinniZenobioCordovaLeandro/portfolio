@@ -19,13 +19,10 @@ class MyOutlineButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(50),
         ),
         side: const BorderSide(color: Color(0xFFEDEDED)),
-        padding: const EdgeInsets.symmetric(
-          vertical: 20.0,
-          horizontal: 20.0 * 2.5,
-        ),
       ),
       onPressed: press,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(
             imageSrc,

@@ -1,0 +1,1 @@
+final PHONE_BREAK = 800;

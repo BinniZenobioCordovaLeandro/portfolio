@@ -14,7 +14,7 @@ class HireMeCard extends StatelessWidget {
     return SizedBox(
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).cardTheme.color,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
@@ -41,10 +41,11 @@ class HireMeCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const TextComponent(
+                      TextComponent(
                         "Starting New Project?",
-                        style: TextStyle(
-                            fontSize: 42, fontWeight: FontWeight.bold),
+                        style: Theme.of(context).textTheme.headline5?.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
                       ),
                       const SizedBox(height: 8.0),
                       Center(

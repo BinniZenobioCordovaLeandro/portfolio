@@ -7,6 +7,7 @@ import 'package:bin_protfolio/src/sections/feedback/feedback_section.dart';
 import 'package:bin_protfolio/src/sections/recent_work/recent_work_section.dart';
 import 'package:bin_protfolio/src/sections/service/service_section.dart';
 import 'package:bin_protfolio/src/pages/components/menu.dart';
+import 'package:bin_protfolio/src/sections/skill/skill_section.dart';
 import 'package:bin_protfolio/src/sections/topSection/top_section.dart';
 import 'package:flutter/material.dart';
 
@@ -76,6 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               ServiceSection(),
               RecentWorkSection(),
+              SkillSection(),
               FeedbackSection(),
               ContactSection(),
             ],
