@@ -53,56 +53,60 @@ class _BottomTabMenuState extends State<BottomTabMenu> {
   Widget buildMenuItem(int index, BuildContext context) {
     var media = MediaQuery.of(context).size;
     bool isSmall = media.width <= PHONE_BREAK;
-    return Tooltip(
-      message: menus[index].name!,
-      child: InkWell(
-        onTap: () {
-          setState(() {
-            if (widget.onTap != null) widget.onTap!(index);
-          });
-        },
-        onHover: (value) {
-          setState(() {
-            value ? hoverIndex = index : hoverIndex = widget.selectedIndex;
-          });
-        },
-        child: Stack(
-          children: [
-            if (isSmall)
-              AnimatedSize(
-                duration: const Duration(milliseconds: 200),
-                child: Icon(
-                  menus[index].icon,
-                  size: widget.selectedIndex == index
-                      ? IconTheme.of(context).size! * 1.5
-                      : IconTheme.of(context).size,
-                ),
-              )
-            else
-              TextComponent(
-                menus[index].name!,
-                style: Theme.of(context).textTheme.labelLarge,
-              ),
-            // Hover
-            AnimatedPositioned(
-              duration: const Duration(milliseconds: 200),
-              left: 0,
-              right: 0,
-              bottom: widget.selectedIndex != index && hoverIndex == index
-                  ? -20
-                  : -32,
-              child: Image.asset("assets/images/Hover.png"),
-            ),
-            // Select
-            AnimatedPositioned(
-              duration: const Duration(milliseconds: 200),
-              left: 0,
-              right: 0,
-              bottom: widget.selectedIndex == index ? -2 : -32,
-              child: Image.asset("assets/images/Hover.png"),
-            ),
-          ],
-        ),
+    return InkWell(
+      onTap: () {
+        setState(() {
+          if (widget.onTap != null) widget.onTap!(index);
+        });
+      },
+      onHover: (value) {
+        setState(() {
+          value ? hoverIndex = index : hoverIndex = widget.selectedIndex;
+        });
+      },
+      child: Stack(
+        children: [
+          SizedBox(
+            height: 100,
+            child: (isSmall)
+                ? Tooltip(
+                    message: menus[index].name!,
+                    child: AnimatedSize(
+                      duration: const Duration(milliseconds: 200),
+                      child: Icon(
+                        menus[index].icon,
+                        size: widget.selectedIndex == index
+                            ? IconTheme.of(context).size! * 1.5
+                            : IconTheme.of(context).size,
+                      ),
+                    ),
+                  )
+                : Center(
+                    child: TextComponent(
+                      menus[index].name!,
+                      style: Theme.of(context).textTheme.labelLarge,
+                    ),
+                  ),
+          ),
+          // Hover
+          AnimatedPositioned(
+            duration: const Duration(milliseconds: 200),
+            left: 0,
+            right: 0,
+            bottom: widget.selectedIndex != index && hoverIndex == index
+                ? -20
+                : -32,
+            child: Image.asset("assets/images/Hover.png"),
+          ),
+          // Select
+          AnimatedPositioned(
+            duration: const Duration(milliseconds: 200),
+            left: 0,
+            right: 0,
+            bottom: widget.selectedIndex == index ? -2 : -32,
+            child: Image.asset("assets/images/Hover.png"),
+          ),
+        ],
       ),
     );
   }
