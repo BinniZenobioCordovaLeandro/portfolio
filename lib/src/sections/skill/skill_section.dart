@@ -48,7 +48,7 @@ class _SkillSectionState extends State<SkillSection> {
                 child: TextFieldComponent(
                   controller: textEditingController,
                   labelText: 'Search:',
-                  helperText: 'E.g.: React Native, Flutter',
+                  helperText: 'E.g.: React Native, Flutter, ...',
                   onChanged: (string) => {
                     setState(() {
                       Map<dynamic, Skill> mapSkills = {};
