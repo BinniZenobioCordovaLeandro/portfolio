@@ -67,7 +67,10 @@ class _RecentWorkCardState extends State<RecentWorkCard> {
                     )
                 ],
               ),
-              child: Image.asset(recentWorks[widget.index].image!),
+              child: (Theme.of(context).brightness == Brightness.dark &&
+                      recentWorks[widget.index].imageDark != null)
+                  ? Image.asset(recentWorks[widget.index].imageDark!)
+                  : Image.asset(recentWorks[widget.index].image!),
             ),
             Expanded(
               child: FractionallySizedBoxComponent(
