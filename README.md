@@ -20,7 +20,7 @@ samples, guidance on mobile development, and a full API reference.
 
 To compile
 ```
-  fvm flutter build web --release --base-href "/portfolio/"
+  fvm flutter build web --release --web-renderer html --base-href "/portfolio/"
 ```
 
 To update /docs directory

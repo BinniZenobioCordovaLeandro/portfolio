@@ -35,7 +35,7 @@ class AboutSection extends StatelessWidget {
                       flex: 4,
                       child: AboutSectionText(
                         text:
-                            "Hi, I'm a Flutter Developer with e-commerce experience.\nI like write clean and structured code, always oriented to OOP and modular code.\nI look for code challenges to break!.\nI prefer the full remote work.",
+                            "Binni has worked on creating mobile applications using Flutter and React Native for Android\nand iOS, and he has experience in connecting native SDK from Java and Swift.\nHe led a team and has experience producing front-end and back-end apps for over 5 years, using\nFirebase and AWS Amazon.\nHe has knowledge in Atom Design, Clean Code, Pattern Design, Refactoring techniques, Unit\ntests, Integration tests, and better practices.\nHe's passionate about new technologies and has a participative attitude in code reviews.",
                       ),
                     ),
                   ],
@@ -58,7 +58,7 @@ class AboutSection extends StatelessWidget {
                       flex: 4,
                       child: AboutSectionText(
                         text:
-                            "Binni has worked on creating mobile applications using Flutter and React Native for Android\nand iOS, and he has experience in connecting native SDK from Java and Swift.\nHe led a team and has experience producing front-end and back-end apps for more than 4 years,\nusing Firebase and AWS Amazon.\nHe has knowledge in Atom Design, Clean Code, Pattern Design, Refactoring techniques, Unit\ntests, Integration tests, and better practices.\nHe's passionate about new technologies and has a participative attitude in code reviews",
+                            "Dear Reader,\nI have a big interest in Mobile Developer positions. I have a Technical degree in informatics and experience working as a Developer for Banking core and E-commerce companies in different countries, which gave me proficiency in mobile features and TypeScript. My education and experience are a great fit for what you need from a Mobile Developer.\nMy professional experience includes designing and crafting code for various mobile applications and then testing the resulting code to meet client needs. I also have experience working in a collaborative environment and presenting status updates to project stakeholders.\nHere are some highlights of my qualifications and professional achievements in mobile application design:\nDesigned and developed an Android and iOS application to banking core called ITU CHILE (Banco Itaú Unibanco S.A) using React Native, Typescript, Redux thunk, and applying Atom Design, with REST API backend in AWS.\nResponsible for developing and maintaining iOS and Android applications for Globant, a Software development company.\nWrote test cases for all new features, in 90% of coverage, and added and performed multiple rounds of regression testing to maintain the quality of the products\nFor Platanitos E-commerce in Peru, I completed rebuilding the Android and iOS application, refined and developed features resulting decrease in crashes to 1%, an increase in user retention by 300%, generating more than 1M users in 3 months, and increasing sales of products.\nAs a personal project, designed and developed an Android Taxi App called Pickpointer, which was successfully deployed in the Google App Store and shows interesting data like available or locked routes for natural disasters or events.\nMy passion for designing useful and appealing mobile application software is what drives me to pursue a career at your company, and my eye for design and user-driven approach to development make me an ideal candidate. If you think I’d be a good fit for the position, then please reach out to set up an interview at your earliest convenience.\nSincerely, Binni Cordova",
                       ),
                     ),
                   ],
@@ -74,7 +74,7 @@ class AboutSection extends StatelessWidget {
                 alignment: WrapAlignment.spaceEvenly,
                 children: [
                   SizedBox(
-                    width: 360,
+                    width: 220,
                     child: MyOutlineButton(
                       imageSrc: "assets/images/hand.png",
                       text: "Hire Me!",
@@ -89,15 +89,28 @@ class AboutSection extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    width: 360,
+                    width: 220,
                     child: DefaultButton(
                       imageSrc: "assets/images/download.png",
-                      text: "Download CV",
+                      text: "Download Cover Letter",
                       press: () {
                         LauncherLinkHelper launcherLinkHelper =
                             LauncherLinkHelper(
-                          url:
-                              'https://github.com/BinniZenobioCordovaLeandro/portfolio/blob/main/docs/assets/assets/documents/resumen.pdf',
+                          url: 'assets/documents/letter.pdf',
+                        );
+                        launcherLinkHelper.launchInBrowser();
+                      },
+                    ),
+                  ),
+                  SizedBox(
+                    width: 220,
+                    child: DefaultButton(
+                      imageSrc: "assets/images/download.png",
+                      text: "Download Resume",
+                      press: () {
+                        LauncherLinkHelper launcherLinkHelper =
+                            LauncherLinkHelper(
+                          url: 'assets/documents/resumen.pdf',
                         );
                         launcherLinkHelper.launchInBrowser();
                       },
