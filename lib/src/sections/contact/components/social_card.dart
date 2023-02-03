@@ -56,10 +56,10 @@ class _SocialCardState extends State<SocialCard> {
                 width: 50,
                 fit: BoxFit.contain,
               ),
-              const SizedBox(width: 20.0),
+              const VerticalDivider(),
               TextComponent(
                 widget.name,
-                style: Theme.of(context).textTheme.titleLarge,
+                style: Theme.of(context).textTheme.titleSmall,
               ),
             ],
           ),

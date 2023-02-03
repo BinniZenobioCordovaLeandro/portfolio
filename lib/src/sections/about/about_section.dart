@@ -91,12 +91,13 @@ class AboutSection extends StatelessWidget {
                   SizedBox(
                     width: 220,
                     child: DefaultButton(
-                      imageSrc: "assets/images/download.png",
+                      imageSrc: "assets/images/download_letter.png",
                       text: "Download Cover Letter",
                       press: () {
                         LauncherLinkHelper launcherLinkHelper =
                             LauncherLinkHelper(
-                          url: 'assets/documents/letter.pdf',
+                          url:
+                              'https://firebasestorage.googleapis.com/v0/b/binnicordova.appspot.com/o/documents%2Fletter.pdf?alt=media&token=884994d2-a097-42cb-9dcd-3aa1bc3b88a0',
                         );
                         launcherLinkHelper.launchInBrowser();
                       },
@@ -110,7 +111,8 @@ class AboutSection extends StatelessWidget {
                       press: () {
                         LauncherLinkHelper launcherLinkHelper =
                             LauncherLinkHelper(
-                          url: 'assets/documents/resumen.pdf',
+                          url:
+                              'https://firebasestorage.googleapis.com/v0/b/binnicordova.appspot.com/o/documents%2Fresumen.pdf?alt=media&token=44e36dad-b76f-4f0e-bd4d-04053673a473',
                         );
                         launcherLinkHelper.launchInBrowser();
                       },

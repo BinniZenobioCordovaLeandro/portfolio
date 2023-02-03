@@ -42,8 +42,8 @@ class ContactSection extends StatelessWidget {
               color: Color(0xFF07E24A),
             ),
             const SizedBox(height: 20.0),
-            SizedBox(
-              width: double.infinity,
+            Container(
+              constraints: const BoxConstraints(maxWidth: 1110),
               child: FractionallySizedBoxComponent(
                 child: WrapComponent(
                   alignment: WrapAlignment.spaceBetween,
