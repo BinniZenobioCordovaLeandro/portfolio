@@ -71,7 +71,7 @@ List<RecentWork> recentWorks = [
     title: "Platanitos Retail - Perú",
     link:
         "https://play.google.com/store/apps/details?id=com.platanitos.platanitosapp",
-    image: "assets/images/work_3.png",
+    image: "assets/images/platanitos_old_webapp.gif",
     downloads: "250K+",
     position: "Mobile Developer",
     owner: false,

@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
             ActionButton(
-              icon: const Icon(Icons.whatsapp_outlined),
+              icon: const Icon(Icons.message_outlined),
               onPressed: () {
                 LauncherLinkHelper launcherLinkHelper = LauncherLinkHelper(
                   url: 'https://web.whatsapp.com/send?phone=51971581847',
