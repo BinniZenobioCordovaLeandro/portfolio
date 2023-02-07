@@ -7,12 +7,20 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(
     DevicePreview(
+      key: const Key('PortfolioDevicePreview'),
       enabled: true,
       backgroundColor: Colors.black,
       availableLocales: const [
         Locale.fromSubtags(languageCode: 'en'),
       ],
       defaultDevice: Devices.ios.iPad,
+      data: DevicePreviewData(
+        orientation: Orientation.landscape,
+        isEnabled: true,
+        deviceIdentifier: Devices.ios.iPad.identifier.name,
+      ),
+      isToolbarVisible: true,
+      storage: DevicePreviewStorage.preferences(),
       builder: (context) => const MyApp(), // Wrap your app
     ),
   );

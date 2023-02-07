@@ -31,7 +31,10 @@ class _HomeScreenState extends State<HomeScreen> {
           distance: 80.0,
           children: [
             ActionButton(
-              icon: const Icon(Icons.mail_outline_outlined),
+              icon: const Icon(
+                Icons.mail_outline_outlined,
+                color: Colors.white,
+              ),
               onPressed: () {
                 LauncherLinkHelper launcherLinkHelper = LauncherLinkHelper(
                   url: 'binni.2000.cordova@gmail.com',
@@ -41,7 +44,10 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
             ActionButton(
-              icon: const Icon(Icons.video_camera_front_outlined),
+              icon: const Icon(
+                Icons.video_camera_front_outlined,
+                color: Colors.white,
+              ),
               onPressed: () {
                 LauncherLinkHelper launcherLinkHelper = LauncherLinkHelper(
                   url: 'https://calendly.com/binnizenobiocordovaleandro/meet',
@@ -50,7 +56,10 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
             ActionButton(
-              icon: const Icon(Icons.message_outlined),
+              icon: const Icon(
+                Icons.message_outlined,
+                color: Colors.white,
+              ),
               onPressed: () {
                 LauncherLinkHelper launcherLinkHelper = LauncherLinkHelper(
                   url: 'https://web.whatsapp.com/send?phone=51971581847',

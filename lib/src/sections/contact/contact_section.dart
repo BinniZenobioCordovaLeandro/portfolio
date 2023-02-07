@@ -2,6 +2,7 @@ import 'package:bin_protfolio/src/core/components/default_button.dart';
 import 'package:bin_protfolio/src/core/components/form_component.dart';
 import 'package:bin_protfolio/src/core/components/fractionally_sized_box_component.dart';
 import 'package:bin_protfolio/src/core/components/section_title.dart';
+import 'package:bin_protfolio/src/core/components/text_component.dart';
 import 'package:bin_protfolio/src/core/components/text_field_widget.dart';
 import 'package:bin_protfolio/src/core/components/wrap_component.dart';
 import 'package:bin_protfolio/src/core/helpers/launcher_link_helper.dart';
@@ -69,6 +70,37 @@ class ContactSection extends StatelessWidget {
             ),
             const SizedBox(height: 20.0),
             const ContactBox(),
+            const SizedBox(height: 120.0),
+            Container(
+              constraints: const BoxConstraints(maxWidth: 1110),
+              child: FractionallySizedBoxComponent(
+                child: Row(
+                  children: [
+                    const Expanded(
+                      child: TextComponent(
+                          "Download my PORTAFOLIO PROJECT from my GITHUB, I used the last Flutter Version 3.7.2"),
+                    ),
+                    const VerticalDivider(),
+                    Expanded(
+                      child: TextButton.icon(
+                        icon: const Icon(Icons.download_outlined),
+                        onPressed: () {
+                          LauncherLinkHelper launcherLinkHelper =
+                              LauncherLinkHelper(
+                            url:
+                                "https://github.com/BinniZenobioCordovaLeandro/portfolio",
+                          );
+                          launcherLinkHelper.launchInBrowser();
+                        },
+                        label: const TextComponent(
+                          "https://github.com/BinniZenobioCordovaLeandro/portfolio",
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
             const SizedBox(height: 120.0),
           ],
         ),
