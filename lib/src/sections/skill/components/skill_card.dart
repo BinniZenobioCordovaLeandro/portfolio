@@ -1,6 +1,5 @@
 import 'package:bin_protfolio/src/core/components/text_component.dart';
-import 'package:bin_protfolio/src/models/RecentWork.dart';
-import 'package:bin_protfolio/src/models/Skill.dart';
+import 'package:bin_protfolio/src/models/skill.dart';
 import 'package:flutter/material.dart';
 
 class SkillCard extends StatefulWidget {
@@ -15,10 +14,10 @@ class SkillCard extends StatefulWidget {
   final Skill skill;
 
   @override
-  _SkillCardState createState() => _SkillCardState();
+  SkillCardState createState() => SkillCardState();
 }
 
-class _SkillCardState extends State<SkillCard> {
+class SkillCardState extends State<SkillCard> {
   Duration duration = const Duration(milliseconds: 200);
   bool isHover = false;
 
@@ -60,7 +59,7 @@ class _SkillCardState extends State<SkillCard> {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextComponent("${widget.skill.experience}",
-                      style: Theme.of(context).textTheme.caption?.copyWith(
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
                             color: Colors.white,
                           )),
                 ),

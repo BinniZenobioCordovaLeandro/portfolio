@@ -43,7 +43,7 @@ class HireMeCard extends StatelessWidget {
                     children: [
                       TextComponent(
                         "Starting New Project?",
-                        style: Theme.of(context).textTheme.headline5?.copyWith(
+                        style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                               fontWeight: FontWeight.bold,
                             ),
                       ),

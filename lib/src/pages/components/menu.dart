@@ -1,22 +1,24 @@
 import 'package:bin_protfolio/src/constants/environment.dart';
 import 'package:bin_protfolio/src/core/components/text_component.dart';
-import 'package:bin_protfolio/src/models/Menu.dart';
+import 'package:bin_protfolio/src/models/menu.dart';
 import 'package:flutter/material.dart';
 
 class BottomTabMenu extends StatefulWidget {
-  int selectedIndex = 0;
-  void Function(int index)? onTap;
+  final int selectedIndex;
+  final void Function(int index)? onTap;
 
-  BottomTabMenu({
+  const BottomTabMenu({
+    super.key,
     required this.selectedIndex,
     this.onTap,
   });
 
   @override
-  _BottomTabMenuState createState() => _BottomTabMenuState();
+  @override
+  BottomTabMenuState createState() => BottomTabMenuState();
 }
 
-class _BottomTabMenuState extends State<BottomTabMenu> {
+class BottomTabMenuState extends State<BottomTabMenu> {
   int selectedIndex = 0;
   int hoverIndex = 0;
 
@@ -27,7 +29,7 @@ class _BottomTabMenuState extends State<BottomTabMenu> {
       constraints: const BoxConstraints(maxWidth: 1110),
       height: 100,
       decoration: BoxDecoration(
-        color: Theme.of(context).backgroundColor,
+        color: Theme.of(context).colorScheme.background,
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(10),
           topRight: Radius.circular(10),
@@ -52,7 +54,7 @@ class _BottomTabMenuState extends State<BottomTabMenu> {
 
   Widget buildMenuItem(int index, BuildContext context) {
     var media = MediaQuery.of(context).size;
-    bool isSmall = media.width <= PHONE_BREAK;
+    bool isSmall = media.width <= phoneBreak;
     return InkWell(
       onTap: () {
         setState(() {

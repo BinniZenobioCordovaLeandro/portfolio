@@ -15,7 +15,7 @@ class AboutTextWithSign extends StatelessWidget {
           "Career\nSummary",
           style: Theme.of(context)
               .textTheme
-              .headline2
+              .displayMedium
               ?.copyWith(fontWeight: FontWeight.bold),
         ),
       ],

@@ -1,7 +1,7 @@
 import 'package:bin_protfolio/src/core/components/fractionally_sized_box_component.dart';
 import 'package:bin_protfolio/src/core/components/section_title.dart';
 import 'package:bin_protfolio/src/core/components/wrap_component.dart';
-import 'package:bin_protfolio/src/models/Service.dart';
+import 'package:bin_protfolio/src/models/service.dart';
 import 'package:flutter/material.dart';
 
 import 'components/service_card.dart';

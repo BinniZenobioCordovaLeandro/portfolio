@@ -1,1 +1,1 @@
-final PHONE_BREAK = 800;
+const phoneBreak = 800;

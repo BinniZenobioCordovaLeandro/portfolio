@@ -18,10 +18,10 @@ class FormComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Form(
       key: key,
-      child: child,
       onWillPop: onWillPop,
       onChanged: onChanged,
       autovalidateMode: autovalidateMode,
+      child: child,
     );
   }
 }

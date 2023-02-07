@@ -15,10 +15,10 @@ class SocialCard extends StatefulWidget {
   final Function()? press;
 
   @override
-  _SocialCardState createState() => _SocialCardState();
+  SocialCardState createState() => SocialCardState();
 }
 
-class _SocialCardState extends State<SocialCard> {
+class SocialCardState extends State<SocialCard> {
   bool isHover = false;
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class _SocialCardState extends State<SocialCard> {
                 BoxShadow(
                   offset: const Offset(0, 3.00),
                   blurRadius: 15,
-                  color: widget.color ?? Colors.black.withOpacity(0.1),
+                  color: widget.color,
                 )
             ],
           ),

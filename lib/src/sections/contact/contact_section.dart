@@ -5,7 +5,7 @@ import 'package:bin_protfolio/src/core/components/section_title.dart';
 import 'package:bin_protfolio/src/core/components/text_field_widget.dart';
 import 'package:bin_protfolio/src/core/components/wrap_component.dart';
 import 'package:bin_protfolio/src/core/helpers/launcher_link_helper.dart';
-import 'package:bin_protfolio/src/models/Social.dart';
+import 'package:bin_protfolio/src/models/social.dart';
 import 'package:flutter/material.dart';
 
 import 'components/social_card.dart';
@@ -223,19 +223,15 @@ class _ContactFormState extends State<ContactForm> {
               press: () {
                 bool isValidForm = formKey.currentState!.validate();
                 if (isValidForm) {
-                  try {
-                    LauncherLinkHelper launcherLinkHelper = LauncherLinkHelper(
-                      url: 'binni.2000.cordova@gmail.com',
-                      isMail: true,
-                      params: {
-                        'subject': '$project + $amount',
-                        'body': 'From: $name, $email \n$description'
-                      },
-                    );
-                    launcherLinkHelper.sendEmail();
-                  } catch (e) {
-                    print(e);
-                  }
+                  LauncherLinkHelper launcherLinkHelper = LauncherLinkHelper(
+                    url: 'binni.2000.cordova@gmail.com',
+                    isMail: true,
+                    params: {
+                      'subject': '$project + $amount',
+                      'body': 'From: $name, $email \n$description'
+                    },
+                  );
+                  launcherLinkHelper.sendEmail();
                 }
               },
             ),

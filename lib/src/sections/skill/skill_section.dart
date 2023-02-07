@@ -3,7 +3,7 @@ import 'package:bin_protfolio/src/core/components/hireme_card.dart';
 import 'package:bin_protfolio/src/core/components/section_title.dart';
 import 'package:bin_protfolio/src/core/components/text_field_widget.dart';
 import 'package:bin_protfolio/src/core/components/wrap_component.dart';
-import 'package:bin_protfolio/src/models/Skill.dart';
+import 'package:bin_protfolio/src/models/skill.dart';
 import 'package:bin_protfolio/src/sections/skill/components/skill_card.dart';
 import 'package:flutter/material.dart';
 import 'package:string_similarity/string_similarity.dart';

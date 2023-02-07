@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class Skill {
   final String? image, name, link, experience;
   final int? id;

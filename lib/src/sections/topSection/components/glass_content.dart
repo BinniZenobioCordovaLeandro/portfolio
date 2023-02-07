@@ -30,12 +30,12 @@ class GlassContent extends StatelessWidget {
                   "I am",
                   style: Theme.of(context)
                       .textTheme
-                      .headline5
+                      .headlineSmall
                       ?.copyWith(color: Colors.white),
                 ),
                 Text(
                   "Binni\nCordova",
-                  style: Theme.of(context).textTheme.headline1?.copyWith(
+                  style: Theme.of(context).textTheme.displayLarge?.copyWith(
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
@@ -44,7 +44,7 @@ class GlassContent extends StatelessWidget {
                   "Mobile Developer",
                   style: Theme.of(context)
                       .textTheme
-                      .headline5
+                      .headlineSmall
                       ?.copyWith(color: Colors.white),
                 )
               ],

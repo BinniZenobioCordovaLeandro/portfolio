@@ -2,7 +2,7 @@ import 'package:bin_protfolio/src/core/components/fractionally_sized_box_compone
 import 'package:bin_protfolio/src/core/components/outline_button_component.dart';
 import 'package:bin_protfolio/src/core/components/text_component.dart';
 import 'package:bin_protfolio/src/core/helpers/launcher_link_helper.dart';
-import 'package:bin_protfolio/src/models/RecentWork.dart';
+import 'package:bin_protfolio/src/models/recent_work.dart';
 import 'package:flutter/material.dart';
 
 class RecentWorkCard extends StatefulWidget {
@@ -17,10 +17,10 @@ class RecentWorkCard extends StatefulWidget {
   final void Function()? press;
 
   @override
-  _RecentWorkCardState createState() => _RecentWorkCardState();
+  RecentWorkCardState createState() => RecentWorkCardState();
 }
 
-class _RecentWorkCardState extends State<RecentWorkCard> {
+class RecentWorkCardState extends State<RecentWorkCard> {
   Duration duration = const Duration(milliseconds: 200);
   bool isHover = false;
 
@@ -95,7 +95,7 @@ class _RecentWorkCardState extends State<RecentWorkCard> {
                         opacity: 0.5,
                         child: TextComponent(
                           '${recentWorks[widget.index].position} ${recentWorks[widget.index].technology}',
-                          style: Theme.of(context).textTheme.caption,
+                          style: Theme.of(context).textTheme.bodySmall,
                           textAlign: TextAlign.right,
                         ),
                       ),
@@ -125,7 +125,7 @@ class _RecentWorkCardState extends State<RecentWorkCard> {
                                 recentWorks[widget.index].year!,
                                 style: Theme.of(context)
                                     .textTheme
-                                    .caption
+                                    .bodySmall
                                     ?.copyWith(
                                       color: Colors.white,
                                     ),

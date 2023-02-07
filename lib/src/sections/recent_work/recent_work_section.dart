@@ -2,7 +2,7 @@ import 'package:bin_protfolio/src/core/components/fractionally_sized_box_compone
 import 'package:bin_protfolio/src/core/components/hireme_card.dart';
 import 'package:bin_protfolio/src/core/components/section_title.dart';
 import 'package:bin_protfolio/src/core/components/wrap_component.dart';
-import 'package:bin_protfolio/src/models/RecentWork.dart';
+import 'package:bin_protfolio/src/models/recent_work.dart';
 import 'package:bin_protfolio/src/sections/recent_work/components/recent_work_card.dart';
 import 'package:flutter/material.dart';
 

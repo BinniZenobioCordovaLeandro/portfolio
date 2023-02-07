@@ -1,6 +1,6 @@
 import 'package:bin_protfolio/src/core/components/fractionally_sized_box_component.dart';
 import 'package:bin_protfolio/src/core/components/text_component.dart';
-import 'package:bin_protfolio/src/models/Feedback.dart';
+import 'package:bin_protfolio/src/models/feedback.dart';
 import 'package:flutter/material.dart';
 
 class FeedbackCard extends StatefulWidget {
@@ -12,10 +12,10 @@ class FeedbackCard extends StatefulWidget {
   final int index;
 
   @override
-  _FeedbackCardState createState() => _FeedbackCardState();
+  FeedbackCardState createState() => FeedbackCardState();
 }
 
-class _FeedbackCardState extends State<FeedbackCard> {
+class FeedbackCardState extends State<FeedbackCard> {
   Duration duration = const Duration(milliseconds: 200);
   bool isHover = false;
   @override

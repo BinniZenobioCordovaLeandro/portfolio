@@ -1,6 +1,6 @@
 import 'package:bin_protfolio/src/core/components/text_component.dart';
 import 'package:bin_protfolio/src/core/helpers/launcher_link_helper.dart';
-import 'package:bin_protfolio/src/models/Service.dart';
+import 'package:bin_protfolio/src/models/service.dart';
 import 'package:flutter/material.dart';
 
 class ServiceCard extends StatefulWidget {
@@ -12,10 +12,10 @@ class ServiceCard extends StatefulWidget {
   final int? index;
 
   @override
-  _ServiceCardState createState() => _ServiceCardState();
+  ServiceCardState createState() => ServiceCardState();
 }
 
-class _ServiceCardState extends State<ServiceCard> {
+class ServiceCardState extends State<ServiceCard> {
   bool isHover = false;
   Duration duration = const Duration(milliseconds: 200);
 
@@ -82,7 +82,7 @@ class _ServiceCardState extends State<ServiceCard> {
             const SizedBox(height: 20.0),
             TextComponent(
               services[widget.index!].title!,
-              style: Theme.of(context).textTheme.headline6,
+              style: Theme.of(context).textTheme.titleLarge,
             ),
           ],
         ),
