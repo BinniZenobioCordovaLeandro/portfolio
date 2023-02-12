@@ -3,8 +3,10 @@ import 'package:bin_protfolio/src/themes/dark_theme.dart';
 import 'package:bin_protfolio/src/themes/light_theme.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 void main() {
+  setPathUrlStrategy();
   runApp(
     DevicePreview(
       key: const Key('PortfolioDevicePreview'),
