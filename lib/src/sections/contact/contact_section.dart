@@ -78,7 +78,7 @@ class ContactSection extends StatelessWidget {
                   children: [
                     const Expanded(
                       child: TextComponent(
-                          "Download my PORTAFOLIO PROJECT from my GITHUB, I used the last Flutter Version 3.7.2"),
+                          "Download my PORTAFOLIO PROJECT from my GITHUB, I used the last Flutter Version 3.10.2"),
                     ),
                     const VerticalDivider(),
                     Expanded(
@@ -119,7 +119,7 @@ class ContactBox extends StatelessWidget {
     return Container(
       constraints: const BoxConstraints(maxWidth: 1110),
       decoration: BoxDecoration(
-        color: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.50),
+        color: Theme.of(context).primaryColor.withOpacity(0.20),
         borderRadius: const BorderRadius.all(
           Radius.circular(20),
         ),

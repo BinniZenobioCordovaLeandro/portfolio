@@ -18,6 +18,14 @@ class Service {
 List<Service> services = [
   Service(
     id: 1,
+    title: "App Prototyping",
+    image: "assets/images/download_letter.png",
+    color: Color.fromARGB(255, 255, 252, 203),
+    link:
+        "https://web.whatsapp.com/send?phone=51971581847&text=I need you to prototyping my app... ",
+  ),
+  Service(
+    id: 2,
     title: "App development",
     image: "assets/images/graphic.png",
     color: const Color(0xFFD9FFFC),
@@ -25,7 +33,7 @@ List<Service> services = [
         "https://web.whatsapp.com/send?phone=51971581847&text=I need you to build my app... ",
   ),
   Service(
-    id: 2,
+    id: 3,
     title: "App, Bug fixing",
     image: "assets/images/desktop.png",
     color: const Color(0xFFE4FFC7),
@@ -33,7 +41,7 @@ List<Service> services = [
         "https://web.whatsapp.com/send?phone=51971581847&text=I need you to fix bugs in my app...",
   ),
   Service(
-    id: 3,
+    id: 4,
     title: "Code refactoring",
     image: "assets/images/ui.png",
     color: const Color(0xFFFFF3DD),
@@ -41,7 +49,7 @@ List<Service> services = [
         "https://web.whatsapp.com/send?phone=51971581847&text=I need you to upgrade my app...",
   ),
   Service(
-    id: 4,
+    id: 5,
     title: "App deployment",
     image: "assets/images/Intreaction_design.png",
     color: const Color(0xFFFFE0E0),
