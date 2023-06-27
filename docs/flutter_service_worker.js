@@ -2,26 +2,30 @@
 const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
-const RESOURCES = {
-  "version.json": "2916c93bcc7e775e94f0da6c32336288",
-"index.html": "04375133dec0eba257276cabab4d3631",
-"/": "04375133dec0eba257276cabab4d3631",
-"main.dart.js": "76d37d6875abb2efd8e5122f0f12e81f",
-"flutter.js": "1cfe996e845b3a8a33f57607e8b09ee4",
+
+const RESOURCES = {"version.json": "2916c93bcc7e775e94f0da6c32336288",
+"index.html": "2ac256f1cd431a8aa6558292b610af26",
+"/": "2ac256f1cd431a8aa6558292b610af26",
+"main.dart.js": "b7cf846d19230901d7e4806b8a500edf",
+"flutter.js": "6fef97aeca90b426343ba6c5c9dc5d4a",
 "favicon.png": "518b9c8e0e2af496ac5cddcdb9f51ea6",
 "icons/Icon-192.png": "f08cc9ebcc5dbc1c99113b054fa1909c",
 "icons/Icon-maskable-192.png": "f08cc9ebcc5dbc1c99113b054fa1909c",
 "icons/Icon-maskable-512.png": "1c4ff2f549310e91dedbcb3f25a02b58",
 "icons/Icon-512.png": "1c4ff2f549310e91dedbcb3f25a02b58",
 "manifest.json": "859f26dd003051bdb67d62f99b716cf3",
-"assets/AssetManifest.json": "10f37630ff1614168bcf87f55262b825",
-"assets/NOTICES": "d43f5b14469512fe74e8d458968b3631",
+"assets/AssetManifest.json": "750c20bb9389842b063ff342743044f6",
+"assets/NOTICES": "bd31d21669e8cbf2a61c541963cde255",
 "assets/FontManifest.json": "dc3d03800ccca4601324923c0b1d6d57",
-"assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
-"assets/fonts/MaterialIcons-Regular.otf": "e7069dfd19b331be16bed984668fe080",
+"assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "57d849d738900cfd590e9adc7e208250",
+"assets/shaders/ink_sparkle.frag": "f8b80e740d33eb157090be4e995febdf",
+"assets/AssetManifest.smcbin": "a7e6eb03a1eb498156fb4c7ec5a5c4cf",
+"assets/fonts/MaterialIcons-Regular.otf": "c4ace410ba16ad63f91e0d13d2952b2a",
+"assets/assets/images/aguaviva.png": "09a7abdf2180e3994656f9e38fdf825d",
 "assets/assets/images/email.png": "f59e8ec158ec05d21c8b251d7b0017ca",
 "assets/assets/images/desktop.png": "d4794e3ddcb4fce9a2c12246e3b4d8a7",
 "assets/assets/images/download.png": "d9317d736e7b69f20f57f6ab13f34d3c",
+"assets/assets/images/pittigo.png": "dcd5436d7fa09daad4833ad52d831cc4",
 "assets/assets/images/platanitos_app.gif": "c865feeb1830d5a1f082f365b1c021b9",
 "assets/assets/images/people_jose.jpeg": "7346494a693b154a5fe4e240f7870a0d",
 "assets/assets/images/itu_app.gif": "9bdb4b3c1ddcb8b58a056c13cb731375",
@@ -58,19 +62,20 @@ const RESOURCES = {
 "assets/assets/images/people.png": "f6561cf54d239a098a72225cd21bdc80",
 "assets/assets/documents/resumen.pdf": "3b4abb1f51b1688da3bc51225bfcad57",
 "assets/assets/documents/letter.pdf": "152c8f9aeb9a88bb1eb0fec3ed6e4927",
-"canvaskit/canvaskit.js": "97937cb4c2c2073c968525a3e08c86a3",
-"canvaskit/profiling/canvaskit.js": "c21852696bc1cc82e8894d851c01921a",
-"canvaskit/profiling/canvaskit.wasm": "371bc4e204443b0d5e774d64a046eb99",
-"canvaskit/canvaskit.wasm": "3de12d898ec208a5f31362cc00f09b9e"
-};
-
+"canvaskit/skwasm.js": "1df4d741f441fa1a4d10530ced463ef8",
+"canvaskit/skwasm.wasm": "6711032e17bf49924b2b001cef0d3ea3",
+"canvaskit/chromium/canvaskit.js": "8c8392ce4a4364cbb240aa09b5652e05",
+"canvaskit/chromium/canvaskit.wasm": "fc18c3010856029414b70cae1afc5cd9",
+"canvaskit/canvaskit.js": "76f7d822f42397160c5dfc69cbc9b2de",
+"canvaskit/canvaskit.wasm": "f48eaf57cada79163ec6dec7929486ea",
+"canvaskit/skwasm.worker.js": "19659053a277272607529ef87acf9d8a"};
 // The application shell files that are downloaded before a service worker can
 // start.
-const CORE = [
-  "main.dart.js",
+const CORE = ["main.dart.js",
 "index.html",
 "assets/AssetManifest.json",
 "assets/FontManifest.json"];
+
 // During install, the TEMP cache is populated with the application shell files.
 self.addEventListener("install", (event) => {
   self.skipWaiting();
@@ -81,7 +86,6 @@ self.addEventListener("install", (event) => {
     })
   );
 });
-
 // During activate, the cache is populated with the temp files downloaded in
 // install. If this service worker is upgrading from one with a saved
 // MANIFEST, then use this to retain unchanged resource files.
@@ -103,6 +107,8 @@ self.addEventListener("activate", function(event) {
         await caches.delete(TEMP);
         // Save the manifest to make future upgrades efficient.
         await manifestCache.put('manifest', new Response(JSON.stringify(RESOURCES)));
+        // Claim client to enable caching on first launch
+        self.clients.claim();
         return;
       }
       var oldManifest = await manifest.json();
@@ -128,6 +134,8 @@ self.addEventListener("activate", function(event) {
       await caches.delete(TEMP);
       // Save the manifest to make future upgrades efficient.
       await manifestCache.put('manifest', new Response(JSON.stringify(RESOURCES)));
+      // Claim client to enable caching on first launch
+      self.clients.claim();
       return;
     } catch (err) {
       // On an unhandled exception the state of the cache cannot be guaranteed.
@@ -138,7 +146,6 @@ self.addEventListener("activate", function(event) {
     }
   }());
 });
-
 // The fetch handler redirects requests for RESOURCE files to the service
 // worker cache.
 self.addEventListener("fetch", (event) => {
@@ -178,7 +185,6 @@ self.addEventListener("fetch", (event) => {
     })
   );
 });
-
 self.addEventListener('message', (event) => {
   // SkipWaiting can be used to immediately activate a waiting service worker.
   // This will also require a page refresh triggered by the main worker.
@@ -191,7 +197,6 @@ self.addEventListener('message', (event) => {
     return;
   }
 });
-
 // Download offline will check the RESOURCES for all files not in the cache
 // and populate them.
 async function downloadOffline() {
@@ -212,7 +217,6 @@ async function downloadOffline() {
   }
   return contentCache.addAll(resources);
 }
-
 // Attempt to download the resource online before falling back to
 // the offline cache.
 function onlineFirst(event) {
