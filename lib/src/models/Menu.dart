@@ -26,13 +26,13 @@ List<Menu> menus = [
   ),
   Menu(
     id: 3,
-    name: "Services",
-    icon: Icons.design_services_outlined,
+    name: "Portfolio",
+    icon: Icons.document_scanner_outlined,
   ),
   Menu(
     id: 4,
-    name: "Portfolio",
-    icon: Icons.document_scanner_outlined,
+    name: "Services",
+    icon: Icons.design_services_outlined,
   ),
   Menu(
     id: 5,

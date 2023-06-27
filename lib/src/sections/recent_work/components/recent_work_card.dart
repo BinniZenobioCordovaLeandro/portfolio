@@ -9,11 +9,11 @@ class RecentWorkCard extends StatefulWidget {
   // just press "Command + ."
   const RecentWorkCard({
     super.key,
-    required this.index,
+    required this.recentWork,
     required this.press,
   });
 
-  final int index;
+  final RecentWork recentWork;
   final void Function()? press;
 
   @override
@@ -45,8 +45,7 @@ class RecentWorkCardState extends State<RecentWorkCard> {
               BoxShadow(
                 offset: const Offset(0, 3.00),
                 blurRadius: 15,
-                color: recentWorks[widget.index].color ??
-                    Colors.black.withOpacity(0.1),
+                color: widget.recentWork.color ?? Colors.black.withOpacity(0.1),
               )
           ],
         ),
@@ -62,15 +61,15 @@ class RecentWorkCardState extends State<RecentWorkCard> {
                     BoxShadow(
                       offset: const Offset(0, 3.00),
                       blurRadius: 13,
-                      color: recentWorks[widget.index].color ??
+                      color: widget.recentWork.color ??
                           Colors.black.withOpacity(0.1),
                     )
                 ],
               ),
               child: (Theme.of(context).brightness == Brightness.dark &&
-                      recentWorks[widget.index].imageDark != null)
-                  ? Image.asset(recentWorks[widget.index].imageDark!)
-                  : Image.asset(recentWorks[widget.index].image!),
+                      widget.recentWork.imageDark != null)
+                  ? Image.asset(widget.recentWork.imageDark!)
+                  : Image.asset(widget.recentWork.image!),
             ),
             Expanded(
               child: FractionallySizedBoxComponent(
@@ -79,11 +78,11 @@ class RecentWorkCardState extends State<RecentWorkCard> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     TextComponent(
-                      recentWorks[widget.index].title!.toUpperCase(),
+                      widget.recentWork.title!.toUpperCase(),
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                     TextComponent(
-                      recentWorks[widget.index].description!,
+                      widget.recentWork.description!,
                       style: Theme.of(context)
                           .textTheme
                           .bodyLarge
@@ -94,7 +93,7 @@ class RecentWorkCardState extends State<RecentWorkCard> {
                       child: Opacity(
                         opacity: 0.5,
                         child: TextComponent(
-                          '${recentWorks[widget.index].position} ${recentWorks[widget.index].technology}',
+                          '${widget.recentWork.position} ${widget.recentWork.technology}',
                           style: Theme.of(context).textTheme.bodySmall,
                           textAlign: TextAlign.right,
                         ),
@@ -105,24 +104,24 @@ class RecentWorkCardState extends State<RecentWorkCard> {
                       children: [
                         Expanded(
                           child: OutlinedButtonComponent(
-                            title: "See project",
+                            title: "${widget.recentWork.downloads} Downloads",
                             onPressed: () {
                               LauncherLinkHelper launcherLinkHelper =
                                   LauncherLinkHelper(
-                                url: recentWorks[widget.index].link!,
+                                url: widget.recentWork.link!,
                               );
                               launcherLinkHelper.launchInBrowser();
                             },
                           ),
                         ),
                         const VerticalDivider(),
-                        if (recentWorks[widget.index].duration != null)
+                        if (widget.recentWork.duration != null)
                           CircleAvatar(
-                            backgroundColor: recentWorks[widget.index].color,
+                            backgroundColor: widget.recentWork.color,
                             child: Padding(
                               padding: const EdgeInsets.all(2.0),
                               child: TextComponent(
-                                recentWorks[widget.index].year!,
+                                widget.recentWork.year!,
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodySmall

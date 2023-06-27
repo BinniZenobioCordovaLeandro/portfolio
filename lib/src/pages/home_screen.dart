@@ -84,8 +84,8 @@ class _HomeScreenState extends State<HomeScreen> {
               Center(
                 child: AboutSection(),
               ),
-              ServiceSection(),
               RecentWorkSection(),
+              ServiceSection(),
               SkillSection(),
               FeedbackSection(),
               ContactSection(),
