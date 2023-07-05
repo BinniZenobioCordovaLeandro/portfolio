@@ -24,63 +24,65 @@ class RecentWorkSection extends StatelessWidget {
         ),
       ),
       child: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(height: 20.0),
-            const SectionTitle(
-              title: "Recent Works",
-              subTitle: "My great works",
-              color: Color(0xFFFFB100),
-            ),
-            const SizedBox(height: 20.0),
-            for (var type in workType)
-              SizedBox(
-                width: 1110,
-                child: FractionallySizedBoxComponent(
-                  child: WrapComponent(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 16),
-                        child: SizedBox(
-                          width: double.infinity,
-                          child: TextComponent(
-                            "${type.title}",
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineMedium
-                                ?.copyWith(
-                              color: type.color,
-                              shadows: [
-                                Shadow(
-                                  offset: const Offset(3.0, 3.0),
-                                  blurRadius: 3.0,
-                                  color:
-                                      Theme.of(context).scaffoldBackgroundColor,
-                                ),
-                              ],
+        child: SafeArea(
+          child: Column(
+            children: [
+              const SizedBox(height: 20.0),
+              const SectionTitle(
+                title: "Recent Works",
+                subTitle: "My great works",
+                color: Color(0xFFFFB100),
+              ),
+              const SizedBox(height: 20.0),
+              for (var type in workType)
+                SizedBox(
+                  width: 1110,
+                  child: FractionallySizedBoxComponent(
+                    child: WrapComponent(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 16),
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: TextComponent(
+                              "${type.title}",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineMedium
+                                  ?.copyWith(
+                                color: type.color,
+                                shadows: [
+                                  Shadow(
+                                    offset: const Offset(3.0, 3.0),
+                                    blurRadius: 3.0,
+                                    color: Theme.of(context)
+                                        .scaffoldBackgroundColor,
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      for (var work in recentWorks
-                          .where((element) => type.id == element.workType?.id))
-                        RecentWorkCard(
-                          recentWork: work,
-                          press: () {},
-                        ),
-                    ],
+                        for (var work in recentWorks.where(
+                            (element) => type.id == element.workType?.id))
+                          RecentWorkCard(
+                            recentWork: work,
+                            press: () {},
+                          ),
+                      ],
+                    ),
                   ),
                 ),
+              const SizedBox(height: 20.0),
+              const SizedBox(
+                width: 1110,
+                child: FractionallySizedBoxComponent(
+                  child: HireMeCard(),
+                ),
               ),
-            const SizedBox(height: 20.0),
-            const SizedBox(
-              width: 1110,
-              child: FractionallySizedBoxComponent(
-                child: HireMeCard(),
-              ),
-            ),
-            const SizedBox(height: 120.0),
-          ],
+              const SizedBox(height: 120.0),
+            ],
+          ),
         ),
       ),
     );

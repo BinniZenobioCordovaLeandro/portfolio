@@ -74,7 +74,7 @@ List<RecentWork> recentWorks = [
     position: "Senior Mobile",
     technology: 'React Native',
     duration: '1 year',
-    year: '2022 to now',
+    year: '2022 now',
     workType: workType[0],
   ),
   RecentWork(

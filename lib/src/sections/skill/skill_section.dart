@@ -34,89 +34,91 @@ class _SkillSectionState extends State<SkillSection> {
         ),
       ),
       child: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(height: 20.0),
-            const SectionTitle(
-              title: "My Skill",
-              subTitle: "My proficient knowledge",
-              color: Color(0xFFFFB100),
-            ),
-            const SizedBox(height: 20.0),
-            SizedBox(
-              child: FractionallySizedBoxComponent(
-                child: TextFieldComponent(
-                  controller: textEditingController,
-                  labelText: 'Search:',
-                  helperText: 'E.g.: React Native, Flutter, ...',
-                  onChanged: (string) => {
-                    setState(() {
-                      Map<dynamic, Skill> mapSkills = {};
-                      for (var element in skills) {
-                        List<String> listString =
-                            string.toLowerCase().split(" ");
+        child: SafeArea(
+          child: Column(
+            children: [
+              const SizedBox(height: 20.0),
+              const SectionTitle(
+                title: "My Skill",
+                subTitle: "My proficient knowledge",
+                color: Color(0xFFFFB100),
+              ),
+              const SizedBox(height: 20.0),
+              SizedBox(
+                child: FractionallySizedBoxComponent(
+                  child: TextFieldComponent(
+                    controller: textEditingController,
+                    labelText: 'Search:',
+                    helperText: 'E.g.: React Native, Flutter, ...',
+                    onChanged: (string) => {
+                      setState(() {
+                        Map<dynamic, Skill> mapSkills = {};
+                        for (var element in skills) {
+                          List<String> listString =
+                              string.toLowerCase().split(" ");
 
-                        for (var stringElement in listString) {
-                          double? comparison = element.name
-                              ?.toLowerCase()
-                              .similarityTo(stringElement);
-                          if (comparison != null && comparison >= 0.2) {
-                            mapSkills[element.id] = element;
+                          for (var stringElement in listString) {
+                            double? comparison = element.name
+                                ?.toLowerCase()
+                                .similarityTo(stringElement);
+                            if (comparison != null && comparison >= 0.2) {
+                              mapSkills[element.id] = element;
+                            }
                           }
                         }
-                      }
-                      search = string;
-                      filteredSkill =
-                          mapSkills.entries.map((e) => e.value).toList();
-                    })
-                  },
-                  textInputAction: TextInputAction.search,
-                  suffixIcon: (search.isNotEmpty)
-                      ? IconButton(
-                          onPressed: () {
-                            setState(() {
-                              search = "";
-                              textEditingController.clear();
-                            });
-                          },
-                          icon: const Icon(Icons.clear_outlined),
-                        )
-                      : null,
+                        search = string;
+                        filteredSkill =
+                            mapSkills.entries.map((e) => e.value).toList();
+                      })
+                    },
+                    textInputAction: TextInputAction.search,
+                    suffixIcon: (search.isNotEmpty)
+                        ? IconButton(
+                            onPressed: () {
+                              setState(() {
+                                search = "";
+                                textEditingController.clear();
+                              });
+                            },
+                            icon: const Icon(Icons.clear_outlined),
+                          )
+                        : null,
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(height: 20.0),
-            SizedBox(
-              width: 1110,
-              child: FractionallySizedBoxComponent(
-                child: WrapComponent(
-                  children: (search.isNotEmpty)
-                      ? List.generate(
-                          filteredSkill.length,
-                          (index) => SkillCard(
-                            skill: filteredSkill[index],
-                            press: () {},
+              const SizedBox(height: 20.0),
+              SizedBox(
+                width: 1110,
+                child: FractionallySizedBoxComponent(
+                  child: WrapComponent(
+                    children: (search.isNotEmpty)
+                        ? List.generate(
+                            filteredSkill.length,
+                            (index) => SkillCard(
+                              skill: filteredSkill[index],
+                              press: () {},
+                            ),
+                          )
+                        : List.generate(
+                            skills.length,
+                            (index) => SkillCard(
+                              skill: skills[index],
+                              press: () {},
+                            ),
                           ),
-                        )
-                      : List.generate(
-                          skills.length,
-                          (index) => SkillCard(
-                            skill: skills[index],
-                            press: () {},
-                          ),
-                        ),
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(height: 20.0),
-            const SizedBox(
-              width: 1110,
-              child: FractionallySizedBoxComponent(
-                child: HireMeCard(),
+              const SizedBox(height: 20.0),
+              const SizedBox(
+                width: 1110,
+                child: FractionallySizedBoxComponent(
+                  child: HireMeCard(),
+                ),
               ),
-            ),
-            const SizedBox(height: 120.0),
-          ],
+              const SizedBox(height: 120.0),
+            ],
+          ),
         ),
       ),
     );

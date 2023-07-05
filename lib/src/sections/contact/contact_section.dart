@@ -34,75 +34,77 @@ class ContactSection extends StatelessWidget {
         ),
       ),
       child: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(height: 20.0),
-            const SectionTitle(
-              title: "Contact Me",
-              subTitle: "For Project inquiry and information",
-              color: Color(0xFF07E24A),
-            ),
-            const SizedBox(height: 20.0),
-            Container(
-              constraints: const BoxConstraints(maxWidth: 1110),
-              child: FractionallySizedBoxComponent(
-                child: WrapComponent(
-                  alignment: WrapAlignment.spaceBetween,
-                  children: List.generate(
-                    socials.length,
-                    (index) => SocialCard(
-                      color: socials[index].color!,
-                      iconSrc: socials[index].image!,
-                      name: socials[index].name!,
-                      press: (socials[index].link != null)
-                          ? () {
-                              LauncherLinkHelper launcherLinkHelper =
-                                  LauncherLinkHelper(
-                                url: socials[index].link!,
-                              );
-                              launcherLinkHelper.launchInBrowser();
-                            }
-                          : null,
+        child: SafeArea(
+          child: Column(
+            children: [
+              const SizedBox(height: 20.0),
+              const SectionTitle(
+                title: "Contact Me",
+                subTitle: "For Project inquiry and information",
+                color: Color(0xFF07E24A),
+              ),
+              const SizedBox(height: 20.0),
+              Container(
+                constraints: const BoxConstraints(maxWidth: 1110),
+                child: FractionallySizedBoxComponent(
+                  child: WrapComponent(
+                    alignment: WrapAlignment.spaceBetween,
+                    children: List.generate(
+                      socials.length,
+                      (index) => SocialCard(
+                        color: socials[index].color!,
+                        iconSrc: socials[index].image!,
+                        name: socials[index].name!,
+                        press: (socials[index].link != null)
+                            ? () {
+                                LauncherLinkHelper launcherLinkHelper =
+                                    LauncherLinkHelper(
+                                  url: socials[index].link!,
+                                );
+                                launcherLinkHelper.launchInBrowser();
+                              }
+                            : null,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(height: 20.0),
-            const ContactBox(),
-            const SizedBox(height: 120.0),
-            Container(
-              constraints: const BoxConstraints(maxWidth: 1110),
-              child: FractionallySizedBoxComponent(
-                child: Row(
-                  children: [
-                    const Expanded(
-                      child: TextComponent(
-                          "Download my PORTAFOLIO PROJECT from my GITHUB, I used the last Flutter Version 3.10.2"),
-                    ),
-                    const VerticalDivider(),
-                    Expanded(
-                      child: TextButton.icon(
-                        icon: const Icon(Icons.download_outlined),
-                        onPressed: () {
-                          LauncherLinkHelper launcherLinkHelper =
-                              LauncherLinkHelper(
-                            url:
-                                "https://github.com/BinniZenobioCordovaLeandro/portfolio",
-                          );
-                          launcherLinkHelper.launchInBrowser();
-                        },
-                        label: const TextComponent(
-                          "https://github.com/BinniZenobioCordovaLeandro/portfolio",
-                        ),
+              const SizedBox(height: 20.0),
+              const ContactBox(),
+              const SizedBox(height: 120.0),
+              Container(
+                constraints: const BoxConstraints(maxWidth: 1110),
+                child: FractionallySizedBoxComponent(
+                  child: Row(
+                    children: [
+                      const Expanded(
+                        child: TextComponent(
+                            "Download my PORTAFOLIO PROJECT from my GITHUB, I used the last Flutter Version 3.10.2"),
                       ),
-                    )
-                  ],
+                      const VerticalDivider(),
+                      Expanded(
+                        child: TextButton.icon(
+                          icon: const Icon(Icons.download_outlined),
+                          onPressed: () {
+                            LauncherLinkHelper launcherLinkHelper =
+                                LauncherLinkHelper(
+                              url:
+                                  "https://github.com/BinniZenobioCordovaLeandro/portfolio",
+                            );
+                            launcherLinkHelper.launchInBrowser();
+                          },
+                          label: const TextComponent(
+                            "https://github.com/BinniZenobioCordovaLeandro/portfolio",
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(height: 120.0),
-          ],
+              const SizedBox(height: 120.0),
+            ],
+          ),
         ),
       ),
     );

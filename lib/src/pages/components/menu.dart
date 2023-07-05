@@ -46,7 +46,21 @@ class BottomTabMenuState extends State<BottomTabMenu> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: List.generate(
           menus.length,
-          (index) => buildMenuItem(index, context),
+          (index) => TabItem(
+            index: index,
+            isHover: widget.selectedIndex != index && hoverIndex == index,
+            isSelected: widget.selectedIndex == index,
+            onHover: (value) {
+              setState(() {
+                value ? hoverIndex = index : hoverIndex = widget.selectedIndex;
+              });
+            },
+            onTap: () {
+              setState(() {
+                if (widget.onTap != null) widget.onTap!(index);
+              });
+            },
+          ),
         ),
       ),
     );
@@ -78,8 +92,14 @@ class BottomTabMenuState extends State<BottomTabMenu> {
                       child: Icon(
                         menus[index].icon,
                         size: widget.selectedIndex == index
-                            ? IconTheme.of(context).size! * 1.5
-                            : IconTheme.of(context).size,
+                            ? Theme.of(context)
+                                .textTheme
+                                .headlineMedium
+                                ?.fontSize
+                            : Theme.of(context)
+                                .textTheme
+                                .headlineSmall
+                                ?.fontSize,
                       ),
                     ),
                   )
@@ -106,6 +126,84 @@ class BottomTabMenuState extends State<BottomTabMenu> {
             left: 0,
             right: 0,
             bottom: widget.selectedIndex == index ? -2 : -32,
+            child: Image.asset("assets/images/Hover.png"),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class TabItem extends StatelessWidget {
+  final int index;
+  final bool isHover;
+  final bool isSelected;
+  final void Function(bool)? onHover;
+  final void Function()? onTap;
+
+  const TabItem({
+    super.key,
+    required this.index,
+    required this.isHover,
+    required this.isSelected,
+    required this.onHover,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    var media = MediaQuery.of(context).size;
+    bool isSmall = media.width <= phoneBreak;
+    return InkWell(
+      onTap: onTap,
+      onHover: onHover,
+      child: Stack(
+        children: [
+          SizedBox(
+            height: 100,
+            child: (isSmall)
+                ? Tooltip(
+                    message: menus[index].name!,
+                    child: AnimatedSize(
+                      duration: const Duration(milliseconds: 200),
+                      child: Icon(
+                        menus[index].icon,
+                        color: isSelected
+                            ? Theme.of(context).secondaryHeaderColor
+                            : IconTheme.of(context).color,
+                        size: isSelected
+                            ? Theme.of(context)
+                                .textTheme
+                                .headlineMedium
+                                ?.fontSize
+                            : Theme.of(context)
+                                .textTheme
+                                .headlineSmall
+                                ?.fontSize,
+                      ),
+                    ),
+                  )
+                : Center(
+                    child: TextComponent(
+                      menus[index].name!,
+                      style: Theme.of(context).textTheme.labelLarge,
+                    ),
+                  ),
+          ),
+          // Hover
+          AnimatedPositioned(
+            duration: const Duration(milliseconds: 200),
+            left: 0,
+            right: 0,
+            bottom: isHover ? -20 : -32,
+            child: Image.asset("assets/images/Hover.png"),
+          ),
+          // Select
+          AnimatedPositioned(
+            duration: const Duration(milliseconds: 200),
+            left: 0,
+            right: 0,
+            bottom: isSelected ? -2 : -32,
             child: Image.asset("assets/images/Hover.png"),
           ),
         ],

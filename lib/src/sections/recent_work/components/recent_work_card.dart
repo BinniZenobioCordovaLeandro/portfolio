@@ -35,8 +35,7 @@ class RecentWorkCardState extends State<RecentWorkCard> {
       },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
-        height: 200,
-        width: 360,
+        width: 350,
         decoration: BoxDecoration(
           color: Theme.of(context).cardTheme.color,
           borderRadius: BorderRadius.circular(10),
@@ -49,96 +48,99 @@ class RecentWorkCardState extends State<RecentWorkCard> {
               )
           ],
         ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            AnimatedContainer(
-              duration: duration,
-              decoration: BoxDecoration(
-                shape: BoxShape.rectangle,
-                boxShadow: [
-                  if (!isHover)
-                    BoxShadow(
-                      offset: const Offset(0, 3.00),
-                      blurRadius: 13,
-                      color: widget.recentWork.color ??
-                          Colors.black.withOpacity(0.1),
-                    )
-                ],
-              ),
-              child: (Theme.of(context).brightness == Brightness.dark &&
-                      widget.recentWork.imageDark != null)
-                  ? Image.asset(widget.recentWork.imageDark!)
-                  : Image.asset(widget.recentWork.image!),
-            ),
-            Expanded(
-              child: FractionallySizedBoxComponent(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    TextComponent(
-                      widget.recentWork.title!.toUpperCase(),
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                    TextComponent(
-                      widget.recentWork.description!,
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyLarge
-                          ?.copyWith(height: 1.5),
-                    ),
-                    SizedBox(
-                      width: double.infinity,
-                      child: Opacity(
-                        opacity: 0.5,
-                        child: TextComponent(
-                          '${widget.recentWork.position} ${widget.recentWork.technology}',
-                          style: Theme.of(context).textTheme.bodySmall,
-                          textAlign: TextAlign.right,
-                        ),
-                      ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          child: OutlinedButtonComponent(
-                            title: "${widget.recentWork.downloads} Downloads",
-                            onPressed: () {
-                              LauncherLinkHelper launcherLinkHelper =
-                                  LauncherLinkHelper(
-                                url: widget.recentWork.link!,
-                              );
-                              launcherLinkHelper.launchInBrowser();
-                            },
-                          ),
-                        ),
-                        const VerticalDivider(),
-                        if (widget.recentWork.duration != null)
-                          CircleAvatar(
-                            backgroundColor: widget.recentWork.color,
-                            child: Padding(
-                              padding: const EdgeInsets.all(2.0),
-                              child: TextComponent(
-                                widget.recentWork.year!,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodySmall
-                                    ?.copyWith(
-                                      color: Colors.white,
-                                    ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ),
-                      ],
-                    ),
+        child: AspectRatio(
+          aspectRatio: 16 / 9,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              AnimatedContainer(
+                duration: duration,
+                decoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  boxShadow: [
+                    if (!isHover)
+                      BoxShadow(
+                        offset: const Offset(0, 3.00),
+                        blurRadius: 13,
+                        color: widget.recentWork.color ??
+                            Colors.black.withOpacity(0.1),
+                      )
                   ],
                 ),
+                child: (Theme.of(context).brightness == Brightness.dark &&
+                        widget.recentWork.imageDark != null)
+                    ? Image.asset(widget.recentWork.imageDark!)
+                    : Image.asset(widget.recentWork.image!),
               ),
-            ),
-          ],
+              Expanded(
+                child: FractionallySizedBoxComponent(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      TextComponent(
+                        widget.recentWork.title!.toUpperCase(),
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
+                      TextComponent(
+                        widget.recentWork.description!,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyLarge
+                            ?.copyWith(height: 1.5),
+                      ),
+                      SizedBox(
+                        width: double.infinity,
+                        child: Opacity(
+                          opacity: 0.5,
+                          child: TextComponent(
+                            '${widget.recentWork.position} ${widget.recentWork.technology}',
+                            style: Theme.of(context).textTheme.bodySmall,
+                            textAlign: TextAlign.right,
+                          ),
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(
+                            child: OutlinedButtonComponent(
+                              title: "${widget.recentWork.downloads} Downloads",
+                              onPressed: () {
+                                LauncherLinkHelper launcherLinkHelper =
+                                    LauncherLinkHelper(
+                                  url: widget.recentWork.link!,
+                                );
+                                launcherLinkHelper.launchInBrowser();
+                              },
+                            ),
+                          ),
+                          const VerticalDivider(),
+                          if (widget.recentWork.duration != null)
+                            CircleAvatar(
+                              backgroundColor: widget.recentWork.color,
+                              child: Padding(
+                                padding: const EdgeInsets.all(2.0),
+                                child: TextComponent(
+                                  widget.recentWork.year!,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall
+                                      ?.copyWith(
+                                        color: Colors.white,
+                                      ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:bin_protfolio/src/core/components/fractionally_sized_box_component.dart';
 import 'package:bin_protfolio/src/core/components/text_component.dart';
 import 'package:flutter/material.dart';
 
@@ -16,54 +17,61 @@ class SectionTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       constraints: const BoxConstraints(maxWidth: 1110),
-      height: 100,
-      child: FractionallySizedBox(
-        child: Row(
+      child: FractionallySizedBoxComponent(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Container(
-              padding: const EdgeInsets.only(bottom: 72),
-              width: 8,
-              height: 100,
-              color: Theme.of(context).primaryColor,
-              child: DecoratedBox(
-                decoration: BoxDecoration(
+            Row(
+              children: [
+                Container(
+                  width: 8,
+                  height: Theme.of(context).textTheme.titleMedium?.fontSize,
                   color: color,
                 ),
-              ),
-            ),
-            const VerticalDivider(),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                TextComponent(
-                  subTitle,
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.w200,
-                    color: color,
-                    shadows: [
-                      Shadow(
-                        offset: const Offset(1.0, 1.0),
-                        blurRadius: 1.0,
-                        color: Theme.of(context).scaffoldBackgroundColor,
-                      ),
-                    ],
+                Flexible(
+                  child: TextComponent(
+                    subTitle,
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w200,
+                      color: color,
+                      shadows: [
+                        Shadow(
+                          offset: const Offset(1.0, 1.0),
+                          blurRadius: 1.0,
+                          color: Theme.of(context).scaffoldBackgroundColor,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-                TextComponent(
-                  title,
-                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(context).primaryColor,
-                    shadows: [
-                      Shadow(
-                        offset: const Offset(3.0, 3.0),
-                        blurRadius: 3.0,
-                        color: Theme.of(context).scaffoldBackgroundColor,
-                      ),
-                    ],
+              ],
+            ),
+            Flex(
+              direction: Axis.horizontal,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  width: 8,
+                  height: Theme.of(context).textTheme.displayMedium?.fontSize,
+                  color: Theme.of(context).primaryColor,
+                ),
+                Flexible(
+                  child: TextComponent(
+                    title,
+                    style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).primaryColor,
+                      shadows: [
+                        Shadow(
+                          offset: const Offset(3.0, 3.0),
+                          blurRadius: 3.0,
+                          color: Theme.of(context).scaffoldBackgroundColor,
+                        ),
+                      ],
+                    ),
                   ),
-                )
+                ),
               ],
             )
           ],
