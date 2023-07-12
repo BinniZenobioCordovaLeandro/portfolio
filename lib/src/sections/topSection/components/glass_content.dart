@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:bin_protfolio/localization/app_localizations.dart';
 import 'package:bin_protfolio/src/core/components/fractionally_sized_box_component.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +13,7 @@ class GlassContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations localizations = AppLocalizations.of(context);
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: BackdropFilter(
@@ -27,7 +29,7 @@ class GlassContent extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "I am",
+                  localizations.t('top_section.title'),
                   style: Theme.of(context)
                       .textTheme
                       .headlineSmall
@@ -41,7 +43,7 @@ class GlassContent extends StatelessWidget {
                       ),
                 ),
                 Text(
-                  "Mobile Developer",
+                  localizations.t('top_section.carrer'),
                   style: Theme.of(context)
                       .textTheme
                       .headlineSmall

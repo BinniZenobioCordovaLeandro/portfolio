@@ -1,3 +1,5 @@
+import 'package:bin_protfolio/localization/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:bin_protfolio/src/pages/home_screen.dart';
 import 'package:bin_protfolio/src/themes/dark_theme.dart';
 import 'package:bin_protfolio/src/themes/light_theme.dart';
@@ -14,6 +16,7 @@ void main() {
       backgroundColor: Colors.black,
       availableLocales: const [
         Locale.fromSubtags(languageCode: 'en'),
+        Locale.fromSubtags(languageCode: 'es'),
       ],
       defaultDevice: Devices.ios.iPad,
       data: DevicePreviewData(
@@ -44,6 +47,17 @@ class MyApp extends StatelessWidget {
       theme: LightTheme().get(),
       darkTheme: DarkTheme().get(),
       home: const HomeScreen(),
+      supportedLocales: const [
+        Locale('en'),
+        Locale('es'),
+        Locale('it'),
+      ],
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
     );
   }
 }

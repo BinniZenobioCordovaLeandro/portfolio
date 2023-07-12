@@ -1,0 +1,18 @@
+menu: 
+  home: "Home"
+  about: "About"
+  portfolio: "Portfolio"
+  services: "Services"
+  skill: "Skill"
+  testimonial: "Testimonial"
+  contact: "Contact"
+top_section:
+  title: "I am"
+  carrer: "Mobile Developer"
+about:
+  title: "Career\nSummary"
+  description: "Binni has worked on creating mobile applications using Flutter and React Native for Android\nand iOS, and he has experience in connecting native SDK from Java and Swift.\nHe led a team and has experience producing front-end and back-end apps for over 5 years, using\nFirebase and AWS Amazon.\nHe has knowledge in Atom Design, Clean Code, Pattern Design, Refactoring techniques, Unit\ntests, Integration tests, and better practices.\nHe's passionate about new technologies and has a participative attitude in code reviews."
+  subtitle: "Years of Experience"
+  hire_me: "Contratame!"
+  letter: "Cover Letter"
+  resume: "Resume"

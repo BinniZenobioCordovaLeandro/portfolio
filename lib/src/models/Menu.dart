@@ -16,37 +16,37 @@ class Menu {
 List<Menu> menus = [
   Menu(
     id: 1,
-    name: "Home",
+    name: "home",
     icon: Icons.home_outlined,
   ),
   Menu(
     id: 2,
-    name: "About",
+    name: "about",
     icon: Icons.person_outline_outlined,
   ),
   Menu(
     id: 3,
-    name: "Portfolio",
+    name: "portfolio",
     icon: Icons.document_scanner_outlined,
   ),
   Menu(
     id: 4,
-    name: "Services",
+    name: "services",
     icon: Icons.design_services_outlined,
   ),
   Menu(
     id: 5,
-    name: "Skill",
+    name: "skill",
     icon: Icons.person_search_sharp,
   ),
   Menu(
     id: 6,
-    name: "Testimonial",
+    name: "testimonial",
     icon: Icons.feedback_outlined,
   ),
   Menu(
     id: 7,
-    name: "Contact",
+    name: "contact",
     icon: Icons.contact_phone_outlined,
   ),
 ];

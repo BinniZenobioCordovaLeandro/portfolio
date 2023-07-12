@@ -1,0 +1,18 @@
+menu: 
+  home: "Home"
+  about: "SobreMi"
+  portfolio: "Portafolio"
+  services: "Servicios"
+  skill: "Habilidades"
+  testimonial: "Testimonios"
+  contact: "Contacto"
+top_section:
+  title: "Soy"
+  carrer: "Programador Mobile"
+about:
+  title: "Resumen"
+  description: "Binni trabaja en la creación de aplicaciones móviles con Flutter y React Native para Android y iOS,\ny tiene experiencia en la conexión de SDK nativos con Java y Swift.\nDirigió un equipo de desarrolladores y tiene experiencia en la producción de aplicaciones front-end y back-end durante más de 5 años, usando Firebase y AWS Amazon.\nTiene conocimiento en Atom Design, Clean Code, Pattern Design, Técnicas de refactorización, Unit tests, Tests de integración y mejores prácticas.\nLe apasionan las nuevas tecnologías y tiene una actitud participativa en revisiones de código."
+  subtitle: "Años de Experiencia"
+  hire_me: "Hire Me!"
+  letter: "Carta de Presentación"
+  resume: "Curriculum"

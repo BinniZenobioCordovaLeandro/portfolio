@@ -1,3 +1,4 @@
+import 'package:bin_protfolio/localization/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 class ExperienceCard extends StatelessWidget {
@@ -10,6 +11,7 @@ class ExperienceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations localizations = AppLocalizations.of(context);
     return Container(
       height: 240,
       width: 255,
@@ -63,9 +65,9 @@ class ExperienceCard extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 18 / 2),
-            const Text(
-              "Years of Experience",
-              style: TextStyle(
+            Text(
+              localizations.t('about.subtitle'),
+              style: const TextStyle(
                 color: Color(0xFFA600FF),
               ),
             )

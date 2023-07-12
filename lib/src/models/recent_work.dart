@@ -157,6 +157,21 @@ List<RecentWork> recentWorks = [
   ),
   RecentWork(
     id: 6,
+    description:
+        "I created this application for help citizens in Calabria, Italy",
+    color: const Color(0XFF2D4C9C),
+    title: "ViFaciliTa - Italy",
+    link: "https://play.google.com/store/search?q=ViFaciliTa",
+    image: "assets/images/vifacilita.gif",
+    downloads: "50+",
+    position: "Mobile Developer",
+    technology: 'Flutter',
+    duration: '3 months',
+    year: '2023',
+    workType: workType[1],
+  ),
+  RecentWork(
+    id: 7,
     description: "",
     color: Colors.cyanAccent,
     title: "Aves Argentinas App - Argentina",

@@ -1,3 +1,4 @@
+import 'package:bin_protfolio/localization/app_localizations.dart';
 import 'package:bin_protfolio/src/core/components/default_button.dart';
 import 'package:bin_protfolio/src/core/components/fractionally_sized_box_component.dart';
 import 'package:bin_protfolio/src/core/components/my_outline_button.dart';
@@ -15,28 +16,27 @@ class AboutSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations localizations = AppLocalizations.of(context);
     return SizedBox(
       width: double.infinity,
       child: SingleChildScrollView(
         child: SafeArea(
           child: Column(
             children: [
-              const SizedBox(
+              SizedBox(
                 width: 1110,
                 child: FractionallySizedBoxComponent(
-                  child: Flex(
-                    direction: Axis.horizontal,
+                  child: Column(
                     children: [
-                      Expanded(
-                        flex: 2,
+                      const SizedBox(
+                        width: double.infinity,
                         child: AboutTextWithSign(),
                       ),
-                      VerticalDivider(),
-                      Expanded(
-                        flex: 4,
+                      const SizedBox(height: 20.0),
+                      SizedBox(
+                        width: double.infinity,
                         child: AboutSectionText(
-                          text:
-                              "Binni has worked on creating mobile applications using Flutter and React Native for Android\nand iOS, and he has experience in connecting native SDK from Java and Swift.\nHe led a team and has experience producing front-end and back-end apps for over 5 years, using\nFirebase and AWS Amazon.\nHe has knowledge in Atom Design, Clean Code, Pattern Design, Refactoring techniques, Unit\ntests, Integration tests, and better practices.\nHe's passionate about new technologies and has a participative attitude in code reviews.",
+                          text: localizations.t('about.description'),
                         ),
                       ),
                     ],
@@ -62,7 +62,7 @@ class AboutSection extends StatelessWidget {
                       width: 220,
                       child: MyOutlineButton(
                         imageSrc: "assets/images/hand.png",
-                        text: "Hire Me!",
+                        text: localizations.t('about.hire_me'),
                         press: () {
                           LauncherLinkHelper launcherLinkHelper =
                               LauncherLinkHelper(
@@ -77,7 +77,7 @@ class AboutSection extends StatelessWidget {
                       width: 220,
                       child: DefaultButton(
                         imageSrc: "assets/images/download_letter.png",
-                        text: "Download Cover Letter",
+                        text: localizations.t('about.letter'),
                         press: () {
                           LauncherLinkHelper launcherLinkHelper =
                               LauncherLinkHelper(
@@ -92,7 +92,7 @@ class AboutSection extends StatelessWidget {
                       width: 220,
                       child: DefaultButton(
                         imageSrc: "assets/images/download.png",
-                        text: "Download Resume",
+                        text: localizations.t('about.resume'),
                         press: () {
                           LauncherLinkHelper launcherLinkHelper =
                               LauncherLinkHelper(

@@ -1,3 +1,4 @@
+import 'package:bin_protfolio/localization/app_localizations.dart';
 import 'package:bin_protfolio/src/constants/environment.dart';
 import 'package:bin_protfolio/src/core/components/text_component.dart';
 import 'package:bin_protfolio/src/models/menu.dart';
@@ -154,6 +155,7 @@ class TabItem extends StatelessWidget {
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
     bool isSmall = media.width <= phoneBreak;
+    AppLocalizations localizations = AppLocalizations.of(context);
     return InkWell(
       onTap: onTap,
       onHover: onHover,
@@ -163,7 +165,7 @@ class TabItem extends StatelessWidget {
             height: 100,
             child: (isSmall)
                 ? Tooltip(
-                    message: menus[index].name!,
+                    message: localizations.t('menu.${menus[index].name}'),
                     child: AnimatedSize(
                       duration: const Duration(milliseconds: 200),
                       child: Icon(
@@ -185,7 +187,7 @@ class TabItem extends StatelessWidget {
                   )
                 : Center(
                     child: TextComponent(
-                      menus[index].name!,
+                      localizations.t('menu.${menus[index].name}'),
                       style: Theme.of(context).textTheme.labelLarge,
                     ),
                   ),

@@ -1,4 +1,3 @@
-import 'package:bin_protfolio/src/core/components/fractionally_sized_box_component.dart';
 import 'package:bin_protfolio/src/core/components/text_component.dart';
 import 'package:flutter/material.dart';
 
@@ -14,13 +13,11 @@ class AboutSectionText extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      child: FractionallySizedBoxComponent(
-        child: TextComponent(
-          text,
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                fontWeight: FontWeight.w200,
-              ),
-        ),
+      child: TextComponent(
+        text,
+        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+              fontWeight: FontWeight.w200,
+            ),
       ),
     );
   }

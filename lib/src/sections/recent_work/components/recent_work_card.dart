@@ -106,6 +106,14 @@ class RecentWorkCardState extends State<RecentWorkCard> {
                           Expanded(
                             child: OutlinedButtonComponent(
                               title: "${widget.recentWork.downloads} Downloads",
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.resolveWith<Color>(
+                                        (Set<MaterialState> states) {
+                                  return widget.recentWork.color!
+                                      .withOpacity(0.3);
+                                }),
+                              ),
                               onPressed: () {
                                 LauncherLinkHelper launcherLinkHelper =
                                     LauncherLinkHelper(
