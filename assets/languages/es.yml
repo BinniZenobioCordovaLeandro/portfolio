@@ -16,3 +16,29 @@ about:
   hire_me: "Hire Me!"
   letter: "Carta de Presentación"
   resume: "Curriculum"
+portfolio:
+  title: "Trabajos Recientes"
+  subtitle: "Excellentes apps creadas"
+service:
+  title: "Servicios Ofrecidos"
+  subtitle: "Mis mejores habilidades"
+  prototyping: "Prototipado"
+  development: "Programación de App"
+  fixing: "Reparación de Bugs"
+  refactoring: "Optimización de código"
+  deployment: "Publicación de App"
+skill:
+  title: "Mis Conocimientos"
+  subTitle: "Tecnologias que domino"
+  search: "Buscar"
+  helper: "Ej: React Native, Flutter, ..."
+feedback:
+  title: "Comentarios Recibidos"
+  subTitle: "Testimonios de compañeros que me inspiran"
+contact:
+  title: "Contactame"
+  subTitle: "Para consultas e información sobre proyectos"
+components:
+  hire_me:
+    project: "¿Quieres crear tu APP?"
+    hire: "Contactame!"

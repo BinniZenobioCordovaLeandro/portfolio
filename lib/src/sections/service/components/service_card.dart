@@ -1,3 +1,5 @@
+import 'package:bin_protfolio/localization/app_localizations.dart';
+import 'package:bin_protfolio/src/core/components/fractionally_sized_box_component.dart';
 import 'package:bin_protfolio/src/core/components/text_component.dart';
 import 'package:bin_protfolio/src/core/helpers/launcher_link_helper.dart';
 import 'package:bin_protfolio/src/models/service.dart';
@@ -21,6 +23,7 @@ class ServiceCardState extends State<ServiceCard> {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations localizations = AppLocalizations.of(context);
     return InkWell(
       onTap: () {
         if (services[widget.index!].link != null) {
@@ -80,9 +83,23 @@ class ServiceCardState extends State<ServiceCard> {
               ),
             ),
             const SizedBox(height: 20.0),
-            TextComponent(
-              services[widget.index!].title!,
-              style: Theme.of(context).textTheme.titleLarge,
+            Center(
+              child: FractionallySizedBoxComponent(
+                child: TextComponent(
+                  localizations
+                      .t('service.${services[widget.index!].title}')
+                      .toUpperCase(),
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    shadows: [
+                      Shadow(
+                        color: services[widget.index!].color!,
+                        blurRadius: 5.0,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ),
           ],
         ),

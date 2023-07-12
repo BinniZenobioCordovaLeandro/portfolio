@@ -1,3 +1,4 @@
+import 'package:bin_protfolio/localization/app_localizations.dart';
 import 'package:bin_protfolio/src/core/components/default_button.dart';
 import 'package:bin_protfolio/src/core/components/form_component.dart';
 import 'package:bin_protfolio/src/core/components/fractionally_sized_box_component.dart';
@@ -18,6 +19,7 @@ class ContactSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations localizations = AppLocalizations.of(context);
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -38,10 +40,10 @@ class ContactSection extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(height: 20.0),
-              const SectionTitle(
-                title: "Contact Me",
-                subTitle: "For Project inquiry and information",
-                color: Color(0xFF07E24A),
+              SectionTitle(
+                title: localizations.t("contact.title"),
+                subTitle: localizations.t("contact.subTitle"),
+                color: const Color(0xFF07E24A),
               ),
               const SizedBox(height: 20.0),
               Container(

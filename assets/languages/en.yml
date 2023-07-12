@@ -16,3 +16,29 @@ about:
   hire_me: "Contratame!"
   letter: "Cover Letter"
   resume: "Resume"
+portfolio:
+  title: "Recent Works"
+  subtitle: "My great works"
+service:
+  title: "Service Offerings"
+  subtitle: "My Strong Areas"
+  prototyping: "App Prototyping"
+  development: "App development"
+  fixing: "App, Bug fixing"
+  refactoring: "Code refactoring"
+  deployment: "App deployment"
+skill:
+  title: "My Skill"
+  subTitle: "My proficient knowledge"
+  search: "Search"
+  helper: "E.g.: React Native, Flutter, ..."
+feedback:
+  title: "Feedback Received"
+  subTitle: "Coworkers testimonials that inspired me a lot"
+contact:
+  title: "Contact Me"
+  subTitle: "For Project inquiry and information"
+components:
+  hire_me:
+    project: "Starting New Project?"
+    hire: "Hire Me!"

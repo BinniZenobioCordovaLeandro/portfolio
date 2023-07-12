@@ -1,3 +1,4 @@
+import 'package:bin_protfolio/localization/app_localizations.dart';
 import 'package:bin_protfolio/src/core/components/default_button.dart';
 import 'package:bin_protfolio/src/core/components/fractionally_sized_box_component.dart';
 import 'package:bin_protfolio/src/core/components/text_component.dart';
@@ -11,6 +12,7 @@ class HireMeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations localizations = AppLocalizations.of(context);
     return SizedBox(
       child: Container(
         decoration: BoxDecoration(
@@ -31,26 +33,25 @@ class HireMeCard extends StatelessWidget {
             ),
             child: Row(
               children: [
-                Image.asset(
-                  "assets/images/email.png",
-                  height: 80,
-                  width: 80,
-                ),
-                const VerticalDivider(),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      TextComponent(
-                        "Starting New Project?",
-                        style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                              fontWeight: FontWeight.bold,
-                            ),
+                      Center(
+                        child: TextComponent(
+                          localizations.t('components.hire_me.project'),
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineSmall
+                              ?.copyWith(
+                                fontWeight: FontWeight.bold,
+                              ),
+                        ),
                       ),
                       const SizedBox(height: 8.0),
                       Center(
                         child: DefaultButton(
-                          text: "Hire Me!",
+                          text: localizations.t('components.hire_me.hire'),
                           imageSrc: "assets/images/hand.png",
                           press: () {
                             LauncherLinkHelper launcherLinkHelper =
@@ -64,6 +65,12 @@ class HireMeCard extends StatelessWidget {
                       )
                     ],
                   ),
+                ),
+                const VerticalDivider(),
+                Image.asset(
+                  "assets/images/email.png",
+                  height: 80,
+                  width: 80,
                 ),
               ],
             ),

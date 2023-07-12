@@ -1,3 +1,4 @@
+import 'package:bin_protfolio/localization/app_localizations.dart';
 import 'package:bin_protfolio/src/core/components/fractionally_sized_box_component.dart';
 import 'package:bin_protfolio/src/core/components/hireme_card.dart';
 import 'package:bin_protfolio/src/core/components/section_title.dart';
@@ -24,6 +25,7 @@ class _SkillSectionState extends State<SkillSection> {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations localizations = AppLocalizations.of(context);
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -38,18 +40,18 @@ class _SkillSectionState extends State<SkillSection> {
           child: Column(
             children: [
               const SizedBox(height: 20.0),
-              const SectionTitle(
-                title: "My Skill",
-                subTitle: "My proficient knowledge",
-                color: Color(0xFFFFB100),
+              SectionTitle(
+                title: localizations.t("skill.title"),
+                subTitle: localizations.t("skill.subTitle"),
+                color: const Color(0xFFFFB100),
               ),
               const SizedBox(height: 20.0),
               SizedBox(
                 child: FractionallySizedBoxComponent(
                   child: TextFieldComponent(
                     controller: textEditingController,
-                    labelText: 'Search:',
-                    helperText: 'E.g.: React Native, Flutter, ...',
+                    labelText: localizations.t("skill.search"),
+                    helperText: localizations.t("skill.helper"),
                     onChanged: (string) => {
                       setState(() {
                         Map<dynamic, Skill> mapSkills = {};

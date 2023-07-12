@@ -18,7 +18,7 @@ class Service {
 List<Service> services = [
   Service(
     id: 1,
-    title: "App Prototyping",
+    title: "prototyping",
     image: "assets/images/download_letter.png",
     color: Color.fromARGB(255, 255, 252, 203),
     link:
@@ -26,7 +26,7 @@ List<Service> services = [
   ),
   Service(
     id: 2,
-    title: "App development",
+    title: "development",
     image: "assets/images/graphic.png",
     color: const Color(0xFFD9FFFC),
     link:
@@ -34,7 +34,7 @@ List<Service> services = [
   ),
   Service(
     id: 3,
-    title: "App, Bug fixing",
+    title: "fixing",
     image: "assets/images/desktop.png",
     color: const Color(0xFFE4FFC7),
     link:
@@ -42,7 +42,7 @@ List<Service> services = [
   ),
   Service(
     id: 4,
-    title: "Code refactoring",
+    title: "refactoring",
     image: "assets/images/ui.png",
     color: const Color(0xFFFFF3DD),
     link:
@@ -50,7 +50,7 @@ List<Service> services = [
   ),
   Service(
     id: 5,
-    title: "App deployment",
+    title: "deployment",
     image: "assets/images/Intreaction_design.png",
     color: const Color(0xFFFFE0E0),
     link:

@@ -1,3 +1,4 @@
+import 'package:bin_protfolio/localization/app_localizations.dart';
 import 'package:bin_protfolio/src/core/components/fractionally_sized_box_component.dart';
 import 'package:bin_protfolio/src/core/components/hireme_card.dart';
 import 'package:bin_protfolio/src/core/components/section_title.dart';
@@ -14,6 +15,7 @@ class RecentWorkSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations localizations = AppLocalizations.of(context);
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -28,10 +30,10 @@ class RecentWorkSection extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(height: 20.0),
-              const SectionTitle(
-                title: "Recent Works",
-                subTitle: "My great works",
-                color: Color(0xFFFFB100),
+              SectionTitle(
+                title: localizations.t('portfolio.title'),
+                subTitle: localizations.t('portfolio.subtitle'),
+                color: const Color(0xFFFFB100),
               ),
               const SizedBox(height: 20.0),
               for (var type in workType)
