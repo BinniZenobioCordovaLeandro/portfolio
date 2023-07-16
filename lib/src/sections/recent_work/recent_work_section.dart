@@ -4,7 +4,10 @@ import 'package:bin_protfolio/src/core/components/hireme_card.dart';
 import 'package:bin_protfolio/src/core/components/section_title.dart';
 import 'package:bin_protfolio/src/core/components/text_component.dart';
 import 'package:bin_protfolio/src/core/components/wrap_component.dart';
+import 'package:bin_protfolio/src/core/helpers/launcher_link_helper.dart';
+import 'package:bin_protfolio/src/models/collaboration.dart';
 import 'package:bin_protfolio/src/models/recent_work.dart';
+import 'package:bin_protfolio/src/sections/recent_work/components/collaboration_card.dart';
 import 'package:bin_protfolio/src/sections/recent_work/components/recent_work_card.dart';
 import 'package:flutter/material.dart';
 
@@ -73,6 +76,39 @@ class RecentWorkSection extends StatelessWidget {
                           ),
                       ],
                     ),
+                  ),
+                ),
+              const SizedBox(height: 20.0),
+              FractionallySizedBoxComponent(
+                child: SizedBox(
+                  width: double.infinity,
+                  child: TextComponent(
+                    localizations.t('portfolio.collaboration'),
+                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                      shadows: [
+                        Shadow(
+                          offset: const Offset(3.0, 3.0),
+                          blurRadius: 3.0,
+                          color: Theme.of(context).scaffoldBackgroundColor,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              for (var collaboration in collaborations)
+                FractionallySizedBoxComponent(
+                  child: CollaborationCard(
+                    collaboration: collaboration,
+                    onTap: () {
+                      if (collaboration.link?.isNotEmpty == true) {
+                        LauncherLinkHelper launcherLinkHelper =
+                            LauncherLinkHelper(
+                          url: collaboration.link!,
+                        );
+                        launcherLinkHelper.launchInBrowser();
+                      }
+                    },
                   ),
                 ),
               const SizedBox(height: 20.0),
