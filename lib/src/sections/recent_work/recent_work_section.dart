@@ -96,6 +96,7 @@ class RecentWorkSection extends StatelessWidget {
                   ),
                 ),
               ),
+              const SizedBox(height: 20.0),
               for (var collaboration in collaborations)
                 FractionallySizedBoxComponent(
                   child: CollaborationCard(

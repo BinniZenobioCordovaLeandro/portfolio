@@ -81,9 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
             physics: const BouncingScrollPhysics(),
             children: const [
               TopSection(),
-              Center(
-                child: AboutSection(),
-              ),
+              AboutSection(),
               RecentWorkSection(),
               ServiceSection(),
               SkillSection(),
