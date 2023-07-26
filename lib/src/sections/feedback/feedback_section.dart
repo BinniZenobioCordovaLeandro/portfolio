@@ -28,14 +28,23 @@ class FeedbackSection extends StatelessWidget {
                 color: const Color(0xFF00B1FF),
               ),
               const SizedBox(height: 20.0),
-              SizedBox(
-                width: 1110,
-                child: FractionallySizedBoxComponent(
-                  child: WrapComponent(
-                    children: List.generate(
-                      feedbacks.length,
-                      (index) => FeedbackCard(index: index),
-                    ),
+              FractionallySizedBoxComponent(
+                child: SizedBox(
+                  width: 1110,
+                  child: GridView.count(
+                    crossAxisCount: 2,
+                    primary: false,
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    childAspectRatio: 16 / 9,
+                    mainAxisSpacing: 8,
+                    crossAxisSpacing: 8,
+                    children: [
+                      for (var comment in comments)
+                        FeedbackCard(
+                          comment: comment,
+                        )
+                    ],
                   ),
                 ),
               ),

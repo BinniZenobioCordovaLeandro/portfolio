@@ -26,11 +26,16 @@ class CollaborationCard extends StatelessWidget {
           children: [
             Expanded(
               flex: 2,
-              child: Image.asset(
-                collaboration.image!,
-                height: 150,
+              child: Container(
+                color: Colors.white,
+                child: Image.asset(
+                  collaboration.image!,
+                  height: 150,
+                  fit: BoxFit.contain,
+                ),
               ),
             ),
+            const SizedBox(width: 8.0),
             Expanded(
               flex: 6,
               child: Column(

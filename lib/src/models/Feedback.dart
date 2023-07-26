@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class Feedback {
+class Comment {
   final String? name, title, review, userPic, role, rockIn, coolIn, date;
   final int? id;
   final Color? color;
 
-  Feedback({
+  Comment({
     this.name,
     this.title,
     this.review,
@@ -20,8 +20,8 @@ class Feedback {
 }
 
 // List of demo feedbacks
-List<Feedback> feedbacks = [
-  Feedback(
+List<Comment> comments = [
+  Comment(
     id: 1,
     name: "Jose Alberto Alanya Gomez",
     title: "Exceed Expectations",
@@ -35,7 +35,7 @@ List<Feedback> feedbacks = [
     coolIn: "Focused, Fast Learner, Innovative, Flexible",
     date: "01/01/2022 - 08/31/2022",
   ),
-  Feedback(
+  Comment(
     id: 2,
     name: "Nicolas Dario Manzato",
     title: "Exceed Expectations",

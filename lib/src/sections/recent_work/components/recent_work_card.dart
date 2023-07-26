@@ -35,7 +35,6 @@ class RecentWorkCardState extends State<RecentWorkCard> {
       },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
-        width: 350,
         decoration: BoxDecoration(
           color: Theme.of(context).cardTheme.color,
           borderRadius: BorderRadius.circular(10),

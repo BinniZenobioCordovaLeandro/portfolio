@@ -19,6 +19,7 @@ class RecentWorkSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AppLocalizations localizations = AppLocalizations.of(context);
+
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -43,7 +44,7 @@ class RecentWorkSection extends StatelessWidget {
                 SizedBox(
                   width: 1110,
                   child: FractionallySizedBoxComponent(
-                    child: WrapComponent(
+                    child: Column(
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(top: 16),
@@ -68,12 +69,23 @@ class RecentWorkSection extends StatelessWidget {
                             ),
                           ),
                         ),
-                        for (var work in recentWorks.where(
-                            (element) => type.id == element.workType?.id))
-                          RecentWorkCard(
-                            recentWork: work,
-                            press: () {},
-                          ),
+                        GridView.count(
+                          crossAxisCount: 2,
+                          primary: false,
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          childAspectRatio: 16 / 9,
+                          mainAxisSpacing: 8,
+                          crossAxisSpacing: 8,
+                          children: [
+                            for (var work in recentWorks.where(
+                                (element) => type.id == element.workType?.id))
+                              RecentWorkCard(
+                                recentWork: work,
+                                press: () {},
+                              )
+                          ],
+                        ),
                       ],
                     ),
                   ),
@@ -96,20 +108,22 @@ class RecentWorkSection extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 20.0),
               for (var collaboration in collaborations)
                 FractionallySizedBoxComponent(
-                  child: CollaborationCard(
-                    collaboration: collaboration,
-                    onTap: () {
-                      if (collaboration.link?.isNotEmpty == true) {
-                        LauncherLinkHelper launcherLinkHelper =
-                            LauncherLinkHelper(
-                          url: collaboration.link!,
-                        );
-                        launcherLinkHelper.launchInBrowser();
-                      }
-                    },
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: CollaborationCard(
+                      collaboration: collaboration,
+                      onTap: () {
+                        if (collaboration.link?.isNotEmpty == true) {
+                          LauncherLinkHelper launcherLinkHelper =
+                              LauncherLinkHelper(
+                            url: collaboration.link!,
+                          );
+                          launcherLinkHelper.launchInBrowser();
+                        }
+                      },
+                    ),
                   ),
                 ),
               const SizedBox(height: 20.0),

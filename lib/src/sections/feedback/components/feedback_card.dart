@@ -1,15 +1,15 @@
 import 'package:bin_protfolio/src/core/components/fractionally_sized_box_component.dart';
 import 'package:bin_protfolio/src/core/components/text_component.dart';
-import 'package:bin_protfolio/src/models/feedback.dart';
 import 'package:flutter/material.dart';
+import 'package:bin_protfolio/src/models/feedback.dart';
 
 class FeedbackCard extends StatefulWidget {
+  final Comment comment;
+
   const FeedbackCard({
     super.key,
-    required this.index,
+    required this.comment,
   });
-
-  final int index;
 
   @override
   FeedbackCardState createState() => FeedbackCardState();
@@ -39,8 +39,7 @@ class FeedbackCardState extends State<FeedbackCard> {
               BoxShadow(
                 offset: const Offset(0, 3.00),
                 blurRadius: 15,
-                color: feedbacks[widget.index].color ??
-                    Colors.black.withOpacity(0.1),
+                color: widget.comment.color ?? Colors.black.withOpacity(0.1),
               )
           ],
         ),
@@ -58,7 +57,7 @@ class FeedbackCardState extends State<FeedbackCard> {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border: Border.all(
-                      color: feedbacks[widget.index].color!,
+                      color: widget.comment.color!,
                       width: 10,
                     ),
                     boxShadow: [
@@ -66,37 +65,41 @@ class FeedbackCardState extends State<FeedbackCard> {
                         BoxShadow(
                           offset: const Offset(0, 3.00),
                           blurRadius: 13,
-                          color: feedbacks[widget.index].color ??
+                          color: widget.comment.color ??
                               Colors.black.withOpacity(0.1),
                         )
                     ],
                     image: DecorationImage(
-                      image: AssetImage(feedbacks[widget.index].userPic!),
+                      image: AssetImage(widget.comment.userPic!),
                     ),
                   ),
                 ),
-                const VerticalDivider(),
+                const SizedBox(width: 8),
                 Expanded(
                   child: Column(
                     children: [
                       TextComponent(
-                        feedbacks[widget.index].title ?? '',
-                        style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                        widget.comment.title ?? '',
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
                               fontWeight: FontWeight.w300,
                               fontStyle: FontStyle.italic,
                               decoration: TextDecoration.underline,
                             ),
                       ),
-                      TextComponent(
-                        feedbacks[widget.index].review!,
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                              fontWeight: FontWeight.w300,
-                              fontStyle: FontStyle.italic,
-                            ),
+                      const SizedBox(height: 8),
+                      Expanded(
+                        child: TextComponent(
+                          widget.comment.review!,
+                          style:
+                              Theme.of(context).textTheme.bodySmall?.copyWith(
+                                    fontWeight: FontWeight.w300,
+                                    fontStyle: FontStyle.italic,
+                                  ),
+                        ),
                       ),
-                      const Divider(),
+                      const SizedBox(height: 8),
                       TextComponent(
-                        feedbacks[widget.index].name!,
+                        widget.comment.name!,
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                               fontWeight: FontWeight.bold,
                             ),
